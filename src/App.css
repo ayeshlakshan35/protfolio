@@ -1,0 +1,39 @@
+/* Animation for the hero dashed ring */
+@keyframes ring-rotate {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.ring-rotate {
+	/* slowed down from 6s to 12s for a gentler rotation */
+	animation: ring-rotate 15s linear infinite;
+	will-change: transform;
+}
+
+.ring-rotate-reverse {
+	/* slowed down from 8s to 18s for a slower counter-rotation if used */
+	animation: ring-rotate 20s linear infinite reverse;
+}
+
+/* Fade-up animation used on resume cards */
+@keyframes fade-up {
+	0% { transform: translateY(12px); opacity: 0; }
+	100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-up {
+	animation: fade-up 600ms cubic-bezier(.22,.9,.36,1) both;
+}
+
+/* Optional: custom thin green scrollbar for panels that overflow */
+.scrollbar-green::-webkit-scrollbar {
+	width: 8px;
+}
+.scrollbar-green::-webkit-scrollbar-track {
+	background: transparent;
+}
+.scrollbar-green::-webkit-scrollbar-thumb {
+	background: #10b981; /* emerald-400 */
+	border-radius: 9999px;
+}
+
