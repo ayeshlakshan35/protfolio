@@ -1,17 +1,38 @@
 import React from 'react'
 
-export default function Skills() {
-  const skills = ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind']
+const services = [
+  { id: 1, title: 'Web Development', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
+  { id: 2, title: 'UI/UX Design', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
+  { id: 3, title: 'Logo Design', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
+  { id: 4, title: 'SEO', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
+]
+
+export default function Services() {
   return (
-    <section id="skills" className="py-12 bg-gray-50">
-      <div className="max-w-4xl mx-auto p-4">
-        <h2 className="text-2xl font-semibold mb-4">Skills</h2>
-        <ul className="flex flex-wrap gap-2">
-          {skills.map((s) => (
-            <li key={s} className="px-3 py-1 bg-white shadow-sm rounded">{s}</li>
+    <main className="bg-[#0f1724] text-white min-h-screen py-20">
+      <section className="max-w-6xl mx-auto px-6 lg:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {services.map((s) => (
+            <article key={s.id} className="flex items-center gap-8 p-6 border-b border-gray-800">
+              <div className="w-[]">
+                <div className="text-3xl md:text-4xl font-mono text-emerald-400">{String(s.id).padStart(2, '0')}</div>
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-2xl font-extrabold mb-2">{s.title}</h3>
+                <p className="text-gray-300 mb-4 max-w-xl">{s.desc}</p>
+                <div className="text-sm text-emerald-400">Html 5, Css 3, Javascript</div>
+              </div>
+
+              <div>
+                <button className="w-12 h-12 rounded-full bg-white/8 flex items-center justify-center border border-gray-700 hover:bg-emerald-400 hover:text-black transition">
+                  <span className="text-xl">→</span>
+                </button>
+              </div>
+            </article>
           ))}
-        </ul>
-      </div>
-    </section>
+        </div>
+      </section>
+    </main>
   )
 }
