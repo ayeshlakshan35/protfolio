@@ -37,3 +37,23 @@
 	border-radius: 9999px;
 }
 
+/* Small responsive helpers */
+/* Portrait container: keep a tight, responsive circular portrait on small screens */
+.portrait-container {
+	/* these sizes act as a baseline for Tailwind w-60/h-60 classes; small screens will inherit via CSS override */
+	width: 15rem; /* 60 */
+	height: 15rem;
+}
+
+@media (max-width: 640px) {
+	.portrait-container {
+		width: 12rem;
+		height: 12rem;
+	}
+
+	/* slow down ring a bit on very small devices for a gentler effect */
+	.ring-rotate {
+		animation-duration: 18s;
+	}
+}
+
