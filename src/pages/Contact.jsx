@@ -9,8 +9,6 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <div className="bg-[#0b0f13] p-8 rounded-md border border-gray-800 shadow-sm animate-fade-up">
               <h2 className="text-3xl font-extrabold text-emerald-400 mb-3">Let's work together</h2>
-              <p className="text-gray-300 mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sit illo esse commodi.</p>
-
               <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   type="text"
@@ -67,7 +65,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="text-sm text-gray-400">Phone</div>
-                <div className="font-medium">(+44) 321 654 876</div>
+                <div className="font-medium">070-5049567</div>
               </div>
             </div>
 
@@ -81,7 +79,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="text-sm text-gray-400">Email</div>
-                <div className="font-medium">youremail@email.com</div>
+                <div className="font-medium">ayeshalakshan00@gmail.com</div>
               </div>
             </div>
 
@@ -95,7 +93,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="text-sm text-gray-400">Address</div>
-                <div className="font-medium">Code Corner, Tech Town 13579</div>
+                <div className="font-medium">Savinda, Narandeniya, kamburupitiya</div>
               </div>
             </div>
           </aside>
