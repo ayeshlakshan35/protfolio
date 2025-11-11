@@ -1,95 +1,227 @@
-import React, { useState } from 'react'
-import reactLogo from '../assets/react.svg'
+import React, { useState, useEffect, useRef } from "react";
+import reactLogo from "../assets/react.svg";
 
 const projects = [
   {
     id: 1,
-    title: 'Frontend Project',
-    subtitle: 'Creative Home Simplify Your Furniture',
+    title: "OneBlood",
+    subtitle: "",
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.',
-    tech: ['Html 5', 'Css 3', 'Javascript'],
+      "A web-based blood donation and management system designed to connect blood donors, recipients, and hospitals seamlessly. The platform enables users to register as donors, search for available blood types in nearby hospitals, and manage donation records efficiently. Built using HTML5, CSS3, and JavaScript, OneBlood focuses on accessibility, responsiveness, and ease of use to support life-saving connections in real time.",
+    tech: [],
     image: reactLogo,
+    repoBackend: 'https://github.com/ayeshlakshan35/OneBlood-Backend.git',
+    repoFrontend: 'https://github.com/ayeshlakshan35/OneBlood-frontend.git',
   },
   {
     id: 2,
-    title: 'Dashboard Project',
-    subtitle: 'Admin Dashboard UI kit',
-    description:
-      'A dashboard project with responsive widgets and charts.',
-    tech: ['React', 'Tailwind', 'ChartJS'],
+    title: "Dashboard Project",
+    subtitle: "Admin Dashboard UI kit",
+    description: "A dashboard project with responsive widgets and charts.",
+    tech: ["React", "Tailwind", "ChartJS"],
     image: reactLogo,
   },
-]
+];
 
 export default function Projects() {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
+  const [expanded, setExpanded] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef(null);
 
-  const prev = () => setIndex((i) => (i - 1 + projects.length) % projects.length)
-  const next = () => setIndex((i) => (i + 1) % projects.length)
+  // images from assets/oneblodd
+  const onebloodImages = [
+    "/src/assets/oneblodd/20cdeef14bf04b05a8f3d6261e163b78.jpg",
+    "/src/assets/oneblodd/6db27e26722546b39b7ae7d473a6f08f.jpg",
+    "/src/assets/oneblodd/6e121f9638d44221a49c038b10609a28.jpg",
+    "/src/assets/oneblodd/6ebbdb4f3b634e209db43c5160521827.jpg",
+    "/src/assets/oneblodd/7e9de2392f06422d871a882e4802359a.jpg",
+    "/src/assets/oneblodd/80d5f4d562ba4be0bad797a81c4aa429.jpg",
+    "/src/assets/oneblodd/c64c54313cc4480489edbecb719f6fc1.jpg",
+    "/src/assets/oneblodd/d2e17234d946429c8e2f0c7460aceb83.jpg",
+    "/src/assets/oneblodd/e6b27364c1a54416989066ac89e9c087.jpg",
+  ];
 
-  const p = projects[index]
+  const slides = projects.map((p) => ({ ...p }));
+
+  // attach a large image list for the first project (OneBlood)
+  slides[0].imageList = onebloodImages;
+
+  const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
+  const next = () => setIndex((i) => (i + 1) % slides.length);
+
+  const p = slides[index];
+  const [projectSlideIndex, setProjectSlideIndex] = useState(0);
+
+  // advance the inner project image (for projects that have imageList)
+  const advanceProjectImage = () => {
+    if (!p.imageList) return;
+    setProjectSlideIndex((s) => (s + 1) % p.imageList.length);
+  };
+
+  useEffect(() => {
+    // autoplay only for project images (right panel) when showing first project
+    if (p.imageList && !isPaused) {
+      timerRef.current = setInterval(advanceProjectImage, 3000);
+      return () => clearInterval(timerRef.current);
+    }
+    return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [p, isPaused]);
+
+  // reset inner slide index when switching projects
+  useEffect(() => {
+    setProjectSlideIndex(0);
+  }, [index]);
+
+  const prevClick = () => {
+    if (p.imageList) {
+      setProjectSlideIndex(
+        (s) => (s - 1 + p.imageList.length) % p.imageList.length
+      );
+    } else {
+      prev();
+    }
+  };
+
+  const nextClick = () => {
+    if (p.imageList) {
+      setProjectSlideIndex((s) => (s + 1) % p.imageList.length);
+    } else {
+      next();
+    }
+  };
 
   return (
     <main className="bg-[#0f1724] text-white min-h-screen py-20">
       <section className="max-w-6xl mx-auto px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: project text */}
-          <div className="animate-fade-up">
-            <div className="text-6xl font-extrabold text-transparent stroke-white/20 leading-none mb-6">{String(p.id).padStart(2, '0')}</div>
+          {/* Left: project selector and details */}
+          <aside className="animate-fade-up">
+            <h3 className="text-2xl font-extrabold mb-4">Projects</h3>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">{p.title}</h2>
-            <p className="text-gray-300 mb-4 max-w-lg">{p.description}</p>
+            <div className="space-y-3 mb-6">
+              {projects.map((proj, idx) => (
+                <div key={proj.id}>
+                  <button
+                    onClick={() => {
+                      // set the gallery index to this project and toggle the expanded panel
+                      setIndex(idx);
+                      setExpanded((e) => (e === idx ? null : idx));
+                    }}
+                    aria-expanded={expanded === idx}
+                    className={`w-full text-left py-3 px-4 rounded-md font-medium transition-colors duration-200 ${
+                      index === idx
+                        ? "bg-emerald-400 text-black"
+                        : "bg-gray-800 text-gray-300"
+                    }`}
+                  >
+                    <div className="font-semibold">{proj.title}</div>
+                    <div className="text-sm text-gray-400">{proj.subtitle}</div>
+                  </button>
 
-            <div className="flex items-center gap-3 text-sm text-emerald-400 font-medium mb-6">
-              {p.tech.map((t) => (
-                <span key={t} className="inline-block mr-2">{t}</span>
+                  {/* Details panel shown inline directly below the clicked project */}
+                  {expanded === idx && (
+                    <div className="mt-3 bg-[#0b0f13] p-6 rounded-md border border-gray-800 animate-accordion-open">
+                      <h4 className="text-xl font-semibold mb-2">
+                        {proj.title}
+                      </h4>
+                      <p className="text-gray-300 mb-3 text-sm">
+                        {proj.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {proj.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="text-sm text-emerald-400 bg-gray-900/30 px-3 py-1 rounded"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      {/* GitHub links (Backend / Frontend) */}
+                      {(proj.repoBackend || proj.repoFrontend) && (
+                        <div className="mt-4 flex flex-wrap gap-3">
+                          {proj.repoBackend && (
+                            <a
+                              href={proj.repoBackend}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 bg-gray-900/30 text-emerald-400 px-3 py-1 rounded text-sm hover:bg-emerald-400 hover:text-black transition repo-link-focus"
+                            >
+                              Backend
+                            </a>
+                          )}
+
+                          {proj.repoFrontend && (
+                            <a
+                              href={proj.repoFrontend}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 bg-gray-900/30 text-emerald-400 px-3 py-1 rounded text-sm hover:bg-emerald-400 hover:text-black transition repo-link-focus"
+                            >
+                              Frontend
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
-
-            <div className="flex items-center gap-3">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#0b0f13] border border-gray-800 flex items-center justify-center text-gray-200 hover:bg-emerald-900/20"
-                aria-label="live-preview"
-              >
-                ↗
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#0b0f13] border border-gray-800 flex items-center justify-center text-gray-200 hover:bg-emerald-900/20"
-                aria-label="github"
-              >
-                ⎇
-              </a>
-            </div>
-          </div>
+          </aside>
 
           {/* Right: image preview with arrows */}
           <div className="relative flex items-center justify-center">
-            <div className="bg-[#0b0f13] p-6 rounded-md border border-gray-800 shadow-sm w-full max-w-md">
-              <img src={p.image} alt={p.title} className="w-full h-56 object-cover rounded-md" />
+            {/* image container: no extra frame/padding so image fills the card */}
+            <div
+              className="w-full md:max-w-none mx-auto"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {p.imageList ? (
+                // larger container with a higher cap so the image is much larger on desktop
+                <div className="w-full overflow-hidden rounded-md flex items-center justify-center animate-fade-swap">
+                  <img
+                    src={p.imageList[projectSlideIndex]}
+                    alt={`${p.title} ${projectSlideIndex + 1}`}
+                    className="w-full h-auto max-w-[95vw] max-h-[calc(100vh-200px)] object-contain"
+                  />
+                </div>
+              ) : (
+                <div className="w-full overflow-hidden rounded-md animate-fade-swap">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="w-full h-auto max-w-[95vw] max-h-[calc(100vh-200px)] object-cover"
+                  />
+                </div>
+              )}
             </div>
 
-            <div className="absolute right-4 bottom-4 flex gap-2">
-              <button
-                onClick={prev}
-                className="w-10 h-10 bg-emerald-400 text-black rounded flex items-center justify-center font-bold"
-                aria-label="previous"
-              >
-                ‹
-              </button>
-              <button
-                onClick={next}
-                className="w-10 h-10 bg-emerald-400 text-black rounded flex items-center justify-center font-bold"
-                aria-label="next"
-              >
-                ›
-              </button>
+            {/* centered controls below the image (slightly further down) with hover animations */}
+            <div className="absolute left-0 right-0 flex justify-center -bottom-12">
+              <div className="flex gap-3 bg-transparent animate-fade-up">
+                <button
+                  onClick={prevClick}
+                  className="w-10 h-10 bg-emerald-400 text-black rounded flex items-center justify-center font-bold shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-2xl hover:animate-pulse"
+                  aria-label="previous"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={nextClick}
+                  className="w-10 h-10 bg-emerald-400 text-black rounded flex items-center justify-center font-bold shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-2xl hover:animate-pulse"
+                  aria-label="next"
+                >
+                  ›
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-  )
+  );
 }
