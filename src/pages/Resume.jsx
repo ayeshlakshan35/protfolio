@@ -217,7 +217,7 @@ export default function Resume() {
                 {skills.map((s, i) => (
                     <div
                       key={s.id}
-                      className="group bg-[#0b0f13] h-28 rounded-md flex flex-col items-center justify-center text-xl text-gray-100 shadow-sm border border-gray-800 animate-fade-up transform transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:border-emerald-400"
+                      className="group bg-[#0b0f13] h-28 rounded-md flex flex-col items-center justify-center text-xl text-gray-100 shadow-sm border border-gray-800 animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400 cursor-pointer"
                       style={{ animationDelay: `${i * 80}ms` }}
                       aria-label={s.label}
                     >
@@ -233,7 +233,7 @@ export default function Resume() {
                 {experiences.map((exp, i) => (
                   <article
                     key={exp.title}
-                    className="group bg-[#0b0f13] p-5 rounded-md shadow-sm border border-gray-800 animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400"
+                    className="group bg-[#0b0f13] p-5 rounded-md shadow-sm border border-gray-800 animate-fade-up transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 cursor-pointer"
                     style={{ animationDelay: `${i * 120}ms` }}
                   >
                     <div className="text-emerald-400 text-sm font-medium mb-2 transition-colors duration-200 group-hover:text-emerald-300">{exp.period}</div>

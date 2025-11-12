@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import reactLogo from "../assets/react.svg";
+import yummyVideo from "../assets/yummyfeelz/yummy.mp4";
+
+// NOTE: do NOT statically import a video that might be absent at build time.
+// Put the demo video in `public/assets/dashboard-demo.mp4` and reference it as
+// '/assets/dashboard-demo.mp4' below so the dev server serves it statically.
 
 const projects = [
   {
@@ -9,17 +14,17 @@ const projects = [
     description:
       "A web-based blood donation and management system designed to connect blood donors, recipients, and hospitals seamlessly. The platform enables users to register as donors, search for available blood types in nearby hospitals, and manage donation records efficiently. Built using HTML5, CSS3, and JavaScript, OneBlood focuses on accessibility, responsiveness, and ease of use to support life-saving connections in real time.",
     tech: [],
-    image: reactLogo,
     repoBackend: 'https://github.com/ayeshlakshan35/OneBlood-Backend.git',
     repoFrontend: 'https://github.com/ayeshlakshan35/OneBlood-frontend.git',
   },
   {
     id: 2,
-    title: "Dashboard Project",
-    subtitle: "Admin Dashboard UI kit",
-    description: "A dashboard project with responsive widgets and charts.",
-    tech: ["React", "Tailwind", "ChartJS"],
-    image: reactLogo,
+    title: "YummyFeelz",
+    subtitle: "",
+    description: "Yummy Feels is a restaurant website built with HTML, CSS, JavaScript, and PHP using XAMPP. It allows users to order meals online and book tables, while the admin can manage orders and reservations through a simple backend.",
+    // demo video imported from src/assets
+    video: yummyVideo,
+    repoFrontend: 'https://github.com/ayeshlakshan35/YummyFeelz.git',
   },
 ];
 
@@ -27,7 +32,9 @@ export default function Projects() {
   const [index, setIndex] = useState(0);
   const [expanded, setExpanded] = useState(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const timerRef = useRef(null);
+  const videoRef = useRef(null);
 
   // images from assets/oneblodd
   const onebloodImages = [
@@ -64,6 +71,23 @@ export default function Projects() {
     if (p.imageList && !isPaused) {
       timerRef.current = setInterval(advanceProjectImage, 3000);
       return () => clearInterval(timerRef.current);
+    }
+    // reset any previous video load error when switching projects
+    setVideoError(false);
+    // If the selected project has a video, control playback based on isPaused
+    if (p.video && videoRef.current) {
+      try {
+        videoRef.current.currentTime = 0;
+        if (!isPaused) {
+          // play if not paused (autoplay may be blocked unless muted)
+          const playProm = videoRef.current.play();
+          if (playProm && playProm.catch) playProm.catch(() => {});
+        } else {
+          videoRef.current.pause();
+        }
+      } catch (e) {
+        // ignore errors (autoplay policies may block play())
+      }
     }
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -130,7 +154,7 @@ export default function Projects() {
                         {proj.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
-                        {proj.tech.map((t) => (
+                        {(proj.tech || []).map((t) => (
                           <span
                             key={t}
                             className="text-sm text-emerald-400 bg-gray-900/30 px-3 py-1 rounded"
@@ -189,6 +213,23 @@ export default function Projects() {
                     className="w-full h-auto max-w-[95vw] max-h-[calc(100vh-200px)] object-contain"
                   />
                 </div>
+              ) : p.video && !videoError ? (
+                <div className="w-full overflow-hidden rounded-md animate-fade-swap">
+                  <video
+                    ref={videoRef}
+                    playsInline
+                    muted
+                    loop
+                    autoPlay
+                    controls
+                    onError={() => setVideoError(true)}
+                    onLoadedData={() => setVideoError(false)}
+                    className="w-full h-auto max-w-[95vw] max-h-[calc(100vh-200px)] object-contain bg-black"
+                  >
+                    <source src={p.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               ) : (
                 <div className="w-full overflow-hidden rounded-md animate-fade-swap">
                   <img
@@ -198,26 +239,6 @@ export default function Projects() {
                   />
                 </div>
               )}
-            </div>
-
-            {/* centered controls below the image (slightly further down) with hover animations */}
-            <div className="absolute left-0 right-0 flex justify-center -bottom-12">
-              <div className="flex gap-3 bg-transparent animate-fade-up">
-                <button
-                  onClick={prevClick}
-                  className="w-10 h-10 bg-emerald-400 text-black rounded flex items-center justify-center font-bold shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-2xl hover:animate-pulse"
-                  aria-label="previous"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={nextClick}
-                  className="w-10 h-10 bg-emerald-400 text-black rounded flex items-center justify-center font-bold shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-2xl hover:animate-pulse"
-                  aria-label="next"
-                >
-                  ›
-                </button>
-              </div>
             </div>
           </div>
         </div>
