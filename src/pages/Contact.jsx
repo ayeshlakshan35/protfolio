@@ -34,11 +34,17 @@ export default function Contact() {
                   className="bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-100 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
                 />
 
-                <select className="sm:col-span-2 bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-200">
-                  <option>Select a service</option>
+                <select
+                  defaultValue=""
+                  className="sm:col-span-2 bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-200"
+                >
+                  <option value="" disabled>Select a service</option>
                   <option>Web Development</option>
                   <option>UI/UX Design</option>
-                  <option>Consulting</option>
+                  <option>Logo Design</option>
+                  <option>Mobile App Development</option>
+                  <option>Backend Development</option>
+                  <option>Cloud & DevOps</option>
                 </select>
 
                 <textarea
