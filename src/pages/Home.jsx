@@ -64,34 +64,16 @@ export default function Home() {
                     href="mailto:ayeshalakshan00@gmail.com"
                     aria-label="Email"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden>
-                      <path d="M23.44 4.83c-.77.35-1.6.59-2.47.7a4.3 4.3 0 001.88-2.38 8.59 8.59 0 01-2.72 1.04 4.28 4.28 0 00-7.3 3.9A12.14 12.14 0 013 3.15a4.28 4.28 0 001.32 5.71 4.21 4.21 0 01-1.94-.54v.05a4.28 4.28 0 003.43 4.2 4.3 4.3 0 01-1.93.07 4.28 4.28 0 003.99 2.97A8.6 8.6 0 012 19.54a12.13 12.13 0 006.56 1.92c7.88 0 12.2-6.53 12.2-12.2v-.56c.84-.6 1.57-1.34 2.15-2.19z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4" aria-hidden>
+                      <path
+                        d="M3 5.5c0-.83.67-1.5 1.5-1.5h15c.83 0 1.5.67 1.5 1.5V18.5a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 18.5V5.5zm1.8.5l7.2 4.8 7.2-4.8H4.8zm15.4 1.4l-5.93 3.96a2 2 0 01-2.14 0L6.2 7.4v10.1h14V7.4z"
+                        fill="currentColor"
+                      />
                     </svg>
                   </a>
               </div>
             </div>
 
-            {/* Stats row (desktop) */}
-            <div className="mt-12 hidden md:flex items-start gap-8">
-              <div className="text-center">
-                <div className="text-4xl font-bold">12</div>
-                <div className="text-sm text-gray-300">Years of experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold">26</div>
-                <div className="text-sm text-gray-300">Projects completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold">8</div>
-                <div className="text-sm text-gray-300">
-                  Technologies mastered
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold">498</div>
-                <div className="text-sm text-gray-300">Code commits</div>
-              </div>
-            </div>
           </div>
 
           {/* Right: Portrait with dashed ring */}
