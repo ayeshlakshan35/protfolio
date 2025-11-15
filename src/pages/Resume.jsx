@@ -3,29 +3,21 @@ import CertSlider from "../Components/CertSlider";
 
 const experiences = [
   {
-    period: "2022 - Present",
     title: "Full Stack Developer",
     company: "Tech Solutions Inc.",
     bullets: ["Worked on large-scale web apps", "Led frontend architecture"],
   },
   {
-    period: "Summer 2021",
-    title: "Front-End Developer Intern",
+    title: "Front-End Developer",
     company: "Web Design Studio",
     bullets: ["Built marketing landing pages", "Improved accessibility"],
   },
   {
-    period: "2020 - 2021",
     title: "Freelance Web Developer",
     company: "E-commerce Startup",
     bullets: ["Built storefronts", "Maintained client sites"],
   },
-  {
-    period: "2019 - 2020",
-    title: "Teaching Assistant",
-    company: "Tech Academy",
-    bullets: ["Led workshops", "Tutored junior developers"],
-  },
+
 ];
 
 const education = [
@@ -112,6 +104,50 @@ const skills = [
       <rect x="40" y="128" width="64" height="64" rx="32" fill="#A259FF"/>
       <rect x="104" y="32" width="64" height="64" rx="32" fill="#FF7262"/>
       <rect x="104" y="96" width="64" height="64" rx="32" fill="#1ABCFE"/>
+    </svg>
+  ) },
+  { id: "docker", label: "Docker", icon: (
+    <svg viewBox="0 0 128 128" className="w-10 h-10" aria-hidden>
+      <rect x="12" y="58" width="18" height="18" rx="2" fill="#0db7ed"/>
+      <rect x="32" y="42" width="18" height="18" rx="2" fill="#0db7ed"/>
+      <rect x="32" y="62" width="18" height="18" rx="2" fill="#0db7ed"/>
+      <rect x="52" y="42" width="18" height="18" rx="2" fill="#0db7ed"/>
+      <rect x="52" y="62" width="18" height="18" rx="2" fill="#0db7ed"/>
+      <rect x="72" y="62" width="18" height="18" rx="2" fill="#0db7ed"/>
+      <path d="M18 86h74c8 0 16-3 20-10-4-4-9-7-16-7-10 0-17 7-22 7H10c0 12 5 24 20 24h54c11 0 18-4 22-11" stroke="#0db7ed" strokeWidth="6" fill="none" strokeLinecap="round"/>
+    </svg>
+  ) },
+  { id: "github-actions", label: "GitHub Actions", icon: (
+    <svg viewBox="0 0 128 128" className="w-10 h-10" aria-hidden>
+      <rect x="18" y="26" width="92" height="76" rx="10" fill="#24292f"/>
+      <circle cx="44" cy="64" r="14" fill="#2ea043"/>
+      <path d="M44 50v10l6 6" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="84" cy="52" r="8" fill="#79b8ff"/>
+      <circle cx="84" cy="76" r="8" fill="#79b8ff"/>
+      <path d="M84 60v8" stroke="#79b8ff" strokeWidth="4" strokeLinecap="round"/>
+    </svg>
+  ) },
+  { id: "jenkins", label: "Jenkins", icon: (
+    <svg viewBox="0 0 128 128" className="w-10 h-10" aria-hidden>
+      <circle cx="64" cy="64" r="56" fill="#d33833"/>
+      <ellipse cx="64" cy="66" rx="34" ry="38" fill="#f5f5f5"/>
+      <path d="M64 44c-10 0-16 8-16 18s6 18 16 18 16-8 16-18-6-18-16-18z" fill="#fbd0b4"/>
+      <path d="M48 84c4 6 10 10 16 10s12-4 16-10" stroke="#555" strokeWidth="4" strokeLinecap="round"/>
+    </svg>
+  ) },
+  { id: "linux", label: "Linux", icon: (
+    <svg viewBox="0 0 128 128" className="w-10 h-10" aria-hidden>
+      <path d="M64 20c-16 0-28 14-28 34 0 12 4 24 10 34l-8 12c-3 6 2 10 8 8l12-4 6 12c3 6 9 6 12 0l6-12 12 4c6 2 11-2 8-8l-8-12c6-10 10-22 10-34 0-20-12-34-28-34z" fill="#ffce00" stroke="#222" strokeWidth="4" strokeLinejoin="round"/>
+      <circle cx="54" cy="52" r="6" fill="#222"/>
+      <circle cx="74" cy="52" r="6" fill="#222"/>
+      <path d="M54 68c6 6 14 6 20 0" stroke="#222" strokeWidth="4" strokeLinecap="round"/>
+    </svg>
+  ) },
+  { id: "aws", label: "AWS", icon: (
+    <svg viewBox="0 0 128 128" className="w-10 h-10" aria-hidden>
+      <rect width="128" height="128" rx="14" fill="#232f3e"/>
+      <text x="50%" y="48%" dominantBaseline="middle" textAnchor="middle" fontSize="34" fontWeight="700" fill="#fff">aws</text>
+      <path d="M26 88c18 10 36 14 52 14 12 0 22-3 30-8" stroke="#ff9900" strokeWidth="6" strokeLinecap="round" fill="none"/>
     </svg>
   ) },
 ]
@@ -258,6 +294,7 @@ export default function Resume() {
                     "/src/assets/lindin.jpg",
                     "/src/assets/python.jpg",
                     "/src/assets/webDesign.jpg",
+                    "/src/assets/kk.png",
                   ]}
                 />
               </div>
