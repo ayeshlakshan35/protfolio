@@ -9,17 +9,27 @@ export default function CertSlider({ images }) {
     '/src/assets/lindin.jpg',
     '/src/assets/python.jpg',
     '/src/assets/webDesign.jpg',
-
+    '/src/assets/kk.png',
   ]
 
   const [index, setIndex] = useState(0)
   const trackRef = useRef(null)
 
   useEffect(() => {
+    if (!imgs.length) return
     // Keep index in bounds
     if (index < 0) setIndex(imgs.length - 1)
-    if (index >= imgs.length) setIndex(0)
+    else if (index >= imgs.length) setIndex(0)
   }, [index, imgs.length])
+
+  useEffect(() => {
+    if (!imgs.length) return
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % imgs.length)
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [imgs.length])
 
   const prev = () => setIndex((i) => (i - 1 + imgs.length) % imgs.length)
   const next = () => setIndex((i) => (i + 1) % imgs.length)
@@ -27,7 +37,7 @@ export default function CertSlider({ images }) {
   return (
     <div className="relative">
       {/* slider viewport - image will fill this area (no outer frame) */}
-      <div className="overflow-hidden rounded-md h-72 sm:h-96 md:h-[28rem]">
+  <div className="overflow-hidden rounded-md h-72 sm:h-96 md:h-112">
         <div
           ref={trackRef}
           className="flex transition-transform duration-500 ease-in-out h-full"
