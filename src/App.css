@@ -1,0 +1,59 @@
+/* Animation for the hero dashed ring */
+@keyframes ring-rotate {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.ring-rotate {
+	/* slowed down from 6s to 12s for a gentler rotation */
+	animation: ring-rotate 15s linear infinite;
+	will-change: transform;
+}
+
+.ring-rotate-reverse {
+	/* slowed down from 8s to 18s for a slower counter-rotation if used */
+	animation: ring-rotate 20s linear infinite reverse;
+}
+
+/* Fade-up animation used on resume cards */
+@keyframes fade-up {
+	0% { transform: translateY(12px); opacity: 0; }
+	100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-up {
+	animation: fade-up 600ms cubic-bezier(.22,.9,.36,1) both;
+}
+
+/* Optional: custom thin green scrollbar for panels that overflow */
+.scrollbar-green::-webkit-scrollbar {
+	width: 8px;
+}
+.scrollbar-green::-webkit-scrollbar-track {
+	background: transparent;
+}
+.scrollbar-green::-webkit-scrollbar-thumb {
+	background: #10b981; /* emerald-400 */
+	border-radius: 9999px;
+}
+
+/* Small responsive helpers */
+/* Portrait container: keep a tight, responsive circular portrait on small screens */
+.portrait-container {
+	/* these sizes act as a baseline for Tailwind w-60/h-60 classes; small screens will inherit via CSS override */
+	width: 15rem; /* 60 */
+	height: 15rem;
+}
+
+@media (max-width: 640px) {
+	.portrait-container {
+		width: 12rem;
+		height: 12rem;
+	}
+
+	/* slow down ring a bit on very small devices for a gentler effect */
+	.ring-rotate {
+		animation-duration: 18s;
+	}
+}
+
