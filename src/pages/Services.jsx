@@ -1,10 +1,43 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const services = [
-  { id: 1, title: 'Web Development', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
-  { id: 2, title: 'UI/UX Design', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
-  { id: 3, title: 'Logo Design', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
-  { id: 4, title: 'SEO', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque consequat, faucibus et, et.' },
+  {
+    id: 1,
+    title: 'Web Development',
+    desc: 'I design and build responsive, high-performance websites using modern technologies to deliver smooth, engaging user experiences.',
+    meta: 'Technologies: HTML5, CSS3, JavaScript, React',
+  },
+  {
+    id: 2,
+    title: 'UI/UX Design',
+    desc: 'I craft intuitive and visually appealing interfaces that focus on usability and aesthetic balance, ensuring great user engagement.',
+    meta: 'Tools: Figma',
+  },
+  {
+    id: 3,
+    title: 'Logo Design',
+    desc: 'I create memorable and impactful logos that represent your brand identity with simplicity and creativity.',
+    meta: 'Tools: Photoshop',
+  },
+  {
+    id: 4,
+    title: 'Mobile App Development',
+    desc: 'I develop cross-platform mobile applications with smooth performance and modern interfaces to deliver seamless user experiences.',
+    meta: 'Technologies: Flutter, React Native',
+  },
+  {
+    id: 5,
+    title: 'Backend Development',
+    desc: 'I build secure and scalable backend systems that power modern web and mobile applications.',
+    meta: 'Technologies: Node.js, Express, MongoDB, MySQL',
+  },
+  {
+    id: 6,
+    title: 'Cloud & DevOps',
+    desc: 'I help automate deployment, improve scalability, and manage applications in the cloud efficiently.',
+    meta: 'Technologies: Docker, GitHub Actions, Azure',
+  },
 ]
 
 export default function Services() {
@@ -21,13 +54,17 @@ export default function Services() {
               <div className="flex-1">
                 <h3 className="text-2xl font-extrabold mb-2">{s.title}</h3>
                 <p className="text-gray-300 mb-4 max-w-xl">{s.desc}</p>
-                <div className="text-sm text-emerald-400">Html 5, Css 3, Javascript</div>
+                <div className="text-sm text-emerald-400">{s.meta}</div>
               </div>
 
               <div className="mt-2 md:mt-0">
-                <button className="w-12 h-12 rounded-full bg-white/8 flex items-center justify-center border border-gray-700 hover:bg-emerald-400 hover:text-black transition-all duration-300 hover:scale-110 hover:rotate-45">
+                <Link
+                  to="/Contact"
+                  className="w-12 h-12 rounded-full bg-white/8 flex items-center justify-center border border-gray-700 hover:bg-emerald-400 hover:text-black transition-all duration-300 hover:scale-110 hover:rotate-45"
+                  aria-label="Hire me"
+                >
                   <span className="text-xl">→</span>
-                </button>
+                </Link>
               </div>
             </article>
           ))}
