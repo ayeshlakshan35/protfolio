@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Small professional animations for the Projects page */
+@keyframes accordion-open {
+	0% {
+		transform: scaleY(0.96) translateY(-6px);
+		opacity: 0;
+	}
+	60% {
+		transform: scaleY(1.02) translateY(2px);
+		opacity: 0.85;
+	}
+	100% {
+		transform: scaleY(1) translateY(0);
+		opacity: 1;
+	}
+}
+
+.animate-accordion-open {
+	transform-origin: top;
+	animation: accordion-open 320ms cubic-bezier(.22,.9,.28,1) both;
+}
+
+@keyframes fade-swap {
+	from { opacity: 0; transform: translateY(6px) scale(0.995); }
+	to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-fade-swap {
+	animation: fade-swap 280ms ease-out both;
+}
+
+/* Small focus ring for interactive repo links */
+.repo-link-focus:focus {
+	outline: 2px solid rgba(16,185,129,0.12);
+	outline-offset: 4px;
+}
