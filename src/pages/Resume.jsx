@@ -155,8 +155,6 @@ const skills = [
 export default function Resume() {
   const [active, setActive] = useState("Experience");
 
-  const items = active === "Experience" ? experiences : education;
-
   return (
     <main className="bg-[#0f1724] text-white min-h-screen py-16">
       <section className="max-w-6xl mx-auto px-6 lg:px-0">
@@ -290,11 +288,14 @@ export default function Resume() {
               <div>
                 <CertSlider
                   images={[
+                  
+                    "/src/assets/jenkins.png",
+                    "/src/assets/linux.png",
+                    "/src/assets/kk.png",
                     "/src/assets/fronend.jpg",
-                    "/src/assets/lindin.jpg",
                     "/src/assets/python.jpg",
                     "/src/assets/webDesign.jpg",
-                    "/src/assets/kk.png",
+                    "/src/assets/lindin.jpg",
                   ]}
                 />
               </div>
