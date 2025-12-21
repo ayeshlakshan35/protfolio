@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import reactLogo from "../assets/react.svg";
 import yummyVideo from "../assets/yummyfeelz/yummy.mp4";
+import loanshield from "../assets/loanshield/loan.mp4";
 
 // NOTE: do NOT statically import a video that might be absent at build time.
 // Put the demo video in `public/assets/dashboard-demo.mp4` and reference it as
@@ -25,6 +25,13 @@ const projects = [
     // demo video imported from src/assets
     video: yummyVideo,
     repoFrontend: 'https://github.com/ayeshlakshan35/YummyFeelz.git',
+  },
+  {
+    id: 3,
+    title: "LoanShield",
+    description: "Developed a JavaFX-based application that evaluates loan eligibility and risk by collecting and analyzing user financial and personal data. Implemented object-oriented design principles to create a robust, user-friendly system that provides actionable insights for loan approval decisions.",
+    video: "/loan_converted.mp4",
+    repoFrontend: 'https://github.com/kushanumayangana/LoanShield.git',
   },
 ];
 
@@ -216,12 +223,14 @@ export default function Projects() {
               ) : p.video && !videoError ? (
                 <div className="w-full overflow-hidden rounded-md animate-fade-swap">
                   <video
+                    key={p.id}
                     ref={videoRef}
                     playsInline
                     muted
                     loop
                     autoPlay
                     controls
+                    preload="auto"
                     onError={() => setVideoError(true)}
                     onLoadedData={() => setVideoError(false)}
                     className="w-full h-auto max-w-[95vw] max-h-[calc(100vh-200px)] object-contain bg-black"
