@@ -1,6 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import yummyVideo from "../assets/yummyfeelz/yummy.mp4";
-import loanshield from "../assets/loanshield/loan.mp4";
+import loanshieldVideo from "../assets/loanshield/loan_converted.mp4";
+import onebloodVideo from "../assets/oneblodd/oneblood.mp4";
+
+// Import OneBlood images
+import oneblood1 from "../assets/oneblodd/20cdeef14bf04b05a8f3d6261e163b78.jpg";
+import oneblood2 from "../assets/oneblodd/6db27e26722546b39b7ae7d473a6f08f.jpg";
+import oneblood3 from "../assets/oneblodd/6e121f9638d44221a49c038b10609a28.jpg";
+import oneblood4 from "../assets/oneblodd/6ebbdb4f3b634e209db43c5160521827.jpg";
+import oneblood5 from "../assets/oneblodd/7e9de2392f06422d871a882e4802359a.jpg";
+import oneblood6 from "../assets/oneblodd/80d5f4d562ba4be0bad797a81c4aa429.jpg";
+import oneblood7 from "../assets/oneblodd/c64c54313cc4480489edbecb719f6fc1.jpg";
+import oneblood8 from "../assets/oneblodd/d2e17234d946429c8e2f0c7460aceb83.jpg";
+import oneblood9 from "../assets/oneblodd/e6b27364c1a54416989066ac89e9c087.jpg";
 
 // NOTE: do NOT statically import a video that might be absent at build time.
 // Put the demo video in `public/assets/dashboard-demo.mp4` and reference it as
@@ -14,6 +26,7 @@ const projects = [
     description:
       "A web-based blood donation and management system designed to connect blood donors, recipients, and hospitals seamlessly. The platform enables users to register as donors, search for available blood types in nearby hospitals, and manage donation records efficiently. Built using HTML5, CSS3, and JavaScript, OneBlood focuses on accessibility, responsiveness, and ease of use to support life-saving connections in real time.",
     tech: [],
+    video: onebloodVideo,
     repoBackend: 'https://github.com/ayeshlakshan35/OneBlood-Backend.git',
     repoFrontend: 'https://github.com/ayeshlakshan35/OneBlood-frontend.git',
   },
@@ -30,7 +43,7 @@ const projects = [
     id: 3,
     title: "LoanShield",
     description: "Developed a JavaFX-based application that evaluates loan eligibility and risk by collecting and analyzing user financial and personal data. Implemented object-oriented design principles to create a robust, user-friendly system that provides actionable insights for loan approval decisions.",
-    video: "/loan_converted.mp4",
+    video: loanshieldVideo,
     repoFrontend: 'https://github.com/kushanumayangana/LoanShield.git',
   },
 ];
@@ -45,21 +58,18 @@ export default function Projects() {
 
   // images from assets/oneblodd
   const onebloodImages = [
-    "/src/assets/oneblodd/20cdeef14bf04b05a8f3d6261e163b78.jpg",
-    "/src/assets/oneblodd/6db27e26722546b39b7ae7d473a6f08f.jpg",
-    "/src/assets/oneblodd/6e121f9638d44221a49c038b10609a28.jpg",
-    "/src/assets/oneblodd/6ebbdb4f3b634e209db43c5160521827.jpg",
-    "/src/assets/oneblodd/7e9de2392f06422d871a882e4802359a.jpg",
-    "/src/assets/oneblodd/80d5f4d562ba4be0bad797a81c4aa429.jpg",
-    "/src/assets/oneblodd/c64c54313cc4480489edbecb719f6fc1.jpg",
-    "/src/assets/oneblodd/d2e17234d946429c8e2f0c7460aceb83.jpg",
-    "/src/assets/oneblodd/e6b27364c1a54416989066ac89e9c087.jpg",
+    oneblood1,
+    oneblood2,
+    oneblood3,
+    oneblood4,
+    oneblood5,
+    oneblood6,
+    oneblood7,
+    oneblood8,
+    oneblood9,
   ];
 
   const slides = projects.map((p) => ({ ...p }));
-
-  // attach a large image list for the first project (OneBlood)
-  slides[0].imageList = onebloodImages;
 
   const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
   const next = () => setIndex((i) => (i + 1) % slides.length);

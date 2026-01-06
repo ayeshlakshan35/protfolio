@@ -1,15 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react'
 
+// Import certificate images
+import fronendImg from '../assets/fronend.jpg'
+import lindinImg from '../assets/lindin.jpg'
+import pythonImg from '../assets/python.jpg'
+import webDesignImg from '../assets/webDesign.jpg'
+import kkImg from '../assets/kk.png'
+import jenkinsImg from '../assets/jenkins.png'
+import linuxImg from '../assets/linux.png'
+
 // Simple certificate slider. Place your certificate images in src/assets/certs/
 // and list them in the `images` array below (or pass them via props if desired).
 export default function CertSlider({ images }) {
   const imgs = images && images.length ? images : [
-    // defaults (replace with your real cert paths)
-    '/src/assets/fronend.jpg',
-    '/src/assets/lindin.jpg',
-    '/src/assets/python.jpg',
-    '/src/assets/webDesign.jpg',
-    '/src/assets/kk.png',
+    jenkinsImg,
+    linuxImg,
+    kkImg,
+    fronendImg,
+    pythonImg,
+    webDesignImg,
+    lindinImg,
   ]
 
   const [index, setIndex] = useState(0)
