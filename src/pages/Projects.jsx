@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import yummyVideo from "../assets/yummyfeelz/yummy.mp4";
-import loanshieldVideo from "../assets/loanshield/loan_converted.mp4";
-import onebloodVideo from "../assets/oneblodd/oneblood.mp4";
+
+// Use videos from public folder for proper deployment
+const BASE_URL = import.meta.env.BASE_URL;
 
 // Import OneBlood images
 import oneblood1 from "../assets/oneblodd/20cdeef14bf04b05a8f3d6261e163b78.jpg";
@@ -26,7 +26,7 @@ const projects = [
     description:
       "A web-based blood donation and management system designed to connect blood donors, recipients, and hospitals seamlessly. The platform enables users to register as donors, search for available blood types in nearby hospitals, and manage donation records efficiently. Built using HTML5, CSS3, and JavaScript, OneBlood focuses on accessibility, responsiveness, and ease of use to support life-saving connections in real time.",
     tech: [],
-    video: onebloodVideo,
+    video: `${BASE_URL}videos/oneblood.mp4`,
     repoBackend: 'https://github.com/ayeshlakshan35/OneBlood-Backend.git',
     repoFrontend: 'https://github.com/ayeshlakshan35/OneBlood-frontend.git',
   },
@@ -35,15 +35,14 @@ const projects = [
     title: "YummyFeelz",
     subtitle: "",
     description: "Yummy Feels is a restaurant website built with HTML, CSS, JavaScript, and PHP using XAMPP. It allows users to order meals online and book tables, while the admin can manage orders and reservations through a simple backend.",
-    // demo video imported from src/assets
-    video: yummyVideo,
+    video: `${BASE_URL}videos/yummy.mp4`,
     repoFrontend: 'https://github.com/ayeshlakshan35/YummyFeelz.git',
   },
   {
     id: 3,
     title: "LoanShield",
     description: "Developed a JavaFX-based application that evaluates loan eligibility and risk by collecting and analyzing user financial and personal data. Implemented object-oriented design principles to create a robust, user-friendly system that provides actionable insights for loan approval decisions.",
-    video: loanshieldVideo,
+    video: `${BASE_URL}videos/loanshield.mp4`,
     repoFrontend: 'https://github.com/kushanumayangana/LoanShield.git',
   },
 ];
