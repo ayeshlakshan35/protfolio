@@ -3,16 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 // Use videos from public folder for proper deployment
 const BASE_URL = import.meta.env.BASE_URL;
 
-// Import OneBlood images
-import oneblood1 from "../assets/oneblodd/20cdeef14bf04b05a8f3d6261e163b78.jpg";
-import oneblood2 from "../assets/oneblodd/6db27e26722546b39b7ae7d473a6f08f.jpg";
-import oneblood3 from "../assets/oneblodd/6e121f9638d44221a49c038b10609a28.jpg";
-import oneblood4 from "../assets/oneblodd/6ebbdb4f3b634e209db43c5160521827.jpg";
-import oneblood5 from "../assets/oneblodd/7e9de2392f06422d871a882e4802359a.jpg";
-import oneblood6 from "../assets/oneblodd/80d5f4d562ba4be0bad797a81c4aa429.jpg";
-import oneblood7 from "../assets/oneblodd/c64c54313cc4480489edbecb719f6fc1.jpg";
-import oneblood8 from "../assets/oneblodd/d2e17234d946429c8e2f0c7460aceb83.jpg";
-import oneblood9 from "../assets/oneblodd/e6b27364c1a54416989066ac89e9c087.jpg";
+
 
 // NOTE: do NOT statically import a video that might be absent at build time.
 // Put the demo video in `public/assets/dashboard-demo.mp4` and reference it as
@@ -26,7 +17,7 @@ const projects = [
     description:
       "A web-based blood donation and management system designed to connect blood donors, recipients, and hospitals seamlessly. The platform enables users to register as donors, search for available blood types in nearby hospitals, and manage donation records efficiently. Built using HTML5, CSS3, and JavaScript, OneBlood focuses on accessibility, responsiveness, and ease of use to support life-saving connections in real time.",
     tech: [],
-    video: `${BASE_URL}videos/oneblood.mp4`,
+    video: `${BASE_URL}assets/videos/oneblood.mp4`,
     repoBackend: 'https://github.com/ayeshlakshan35/OneBlood-Backend.git',
     repoFrontend: 'https://github.com/ayeshlakshan35/OneBlood-frontend.git',
   },
@@ -35,14 +26,14 @@ const projects = [
     title: "YummyFeelz",
     subtitle: "",
     description: "Yummy Feels is a restaurant website built with HTML, CSS, JavaScript, and PHP using XAMPP. It allows users to order meals online and book tables, while the admin can manage orders and reservations through a simple backend.",
-    video: `${BASE_URL}videos/yummy.mp4`,
+    video: `${BASE_URL}assets/videos/yummy.mp4`,
     repoFrontend: 'https://github.com/ayeshlakshan35/YummyFeelz.git',
   },
   {
     id: 3,
     title: "LoanShield",
     description: "Developed a JavaFX-based application that evaluates loan eligibility and risk by collecting and analyzing user financial and personal data. Implemented object-oriented design principles to create a robust, user-friendly system that provides actionable insights for loan approval decisions.",
-    video: `${BASE_URL}videos/loanshield.mp4`,
+    video: `${BASE_URL}assets/videos/loanshield.mp4`,
     repoFrontend: 'https://github.com/kushanumayangana/LoanShield.git',
   },
 ];
@@ -55,18 +46,7 @@ export default function Projects() {
   const timerRef = useRef(null);
   const videoRef = useRef(null);
 
-  // images from assets/oneblodd
-  const onebloodImages = [
-    oneblood1,
-    oneblood2,
-    oneblood3,
-    oneblood4,
-    oneblood5,
-    oneblood6,
-    oneblood7,
-    oneblood8,
-    oneblood9,
-  ];
+
 
   const slides = projects.map((p) => ({ ...p }));
 
@@ -109,28 +89,7 @@ export default function Projects() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [p, isPaused]);
 
-  // reset inner slide index when switching projects
-  useEffect(() => {
-    setProjectSlideIndex(0);
-  }, [index]);
 
-  const prevClick = () => {
-    if (p.imageList) {
-      setProjectSlideIndex(
-        (s) => (s - 1 + p.imageList.length) % p.imageList.length
-      );
-    } else {
-      prev();
-    }
-  };
-
-  const nextClick = () => {
-    if (p.imageList) {
-      setProjectSlideIndex((s) => (s + 1) % p.imageList.length);
-    } else {
-      next();
-    }
-  };
 
   return (
     <main className="bg-[#0f1724] text-white min-h-screen py-20">

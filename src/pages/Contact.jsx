@@ -13,7 +13,7 @@ export default function Contact() {
 
     try {
       await emailjs.sendForm(
-        "service_tves5n7",
+        "service_tees5n7",
         "template_zf93qxn",
         formRef.current,
         { publicKey: "tJ8QLn07TVbtaD-BS" }
@@ -57,7 +57,7 @@ export default function Contact() {
               >
                 <input
                   type="text"
-                  name="from_name"              // ✅ EmailJS variable
+                  name="from_name"           
                   placeholder="First name"
                   required
                   className="bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-100 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
@@ -65,14 +65,14 @@ export default function Contact() {
 
                 <input
                   type="text"
-                  name="last_name"              // optional
+                  name="last_name"       
                   placeholder="Last name"
                   className="bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-100 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
                 />
 
                 <input
                   type="email"
-                  name="from_email"             // ✅ EmailJS variable
+                  name="from_email"             
                   placeholder="Email address"
                   required
                   className="bg-[#0f1416] border border-emerald-400 rounded px-3 py-2 text-gray-100 focus:outline-none"
@@ -80,13 +80,13 @@ export default function Contact() {
 
                 <input
                   type="tel"
-                  name="phone"                  // ✅ EmailJS variable
+                  name="phone"                  
                   placeholder="Phone number"
                   className="bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-100 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
                 />
 
                 <select
-                  name="service"                // ✅ EmailJS variable
+                  name="service"                
                   defaultValue=""
                   required
                   className="sm:col-span-2 bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-200"
@@ -102,7 +102,7 @@ export default function Contact() {
 
                 <textarea
                   rows={6}
-                  name="message"                // ✅ EmailJS variable
+                  name="message"                
                   required
                   className="sm:col-span-2 bg-[#0f1416] border border-gray-800 rounded px-3 py-2 text-gray-100"
                   placeholder="Type your message here."
