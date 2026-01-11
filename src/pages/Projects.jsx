@@ -50,8 +50,7 @@ export default function Projects() {
 
   const slides = projects.map((p) => ({ ...p }));
 
-  const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
-  const next = () => setIndex((i) => (i + 1) % slides.length);
+
 
   const p = slides[index];
   const [projectSlideIndex, setProjectSlideIndex] = useState(0);
