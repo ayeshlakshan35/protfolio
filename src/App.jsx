@@ -1,6 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./index.css";
-import "./App.css";
+import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/NavBar";
 import Footer from "./Components/footer";
 import Home from "./pages/Home";
@@ -9,22 +7,24 @@ import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
-function App() {
+const Router =
+  import.meta.env.MODE === "development" ? BrowserRouter : HashRouter;
+
+export default function App() {
   return (
-    <Router basename="/protfolio">
+    <Router>
       <Navbar />
 
       <Routes>
+        <Route index element={<Home />} />
         <Route path="/" element={<Home />} />
-        <Route path="/Services" element={<Services />} />
-        <Route path="/Resume" element={<Resume />} />
-        <Route path="/Projects" element={<Projects />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
       <Footer />
     </Router>
   );
 }
-
-export default App;
