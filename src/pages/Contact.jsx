@@ -122,9 +122,78 @@ export default function Contact() {
           </div>
 
           {/* right side cards remain the same */}
-          <aside className="space-y-4">{/* ... */}</aside>
+                    {/* Right: Contact details */}
+          <aside className="space-y-4">
+            <div className="flex items-center gap-4 bg-[#0b0f13] p-4 rounded-md border border-gray-800 shadow-sm animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400 cursor-pointer">
+              <div className="w-12 h-12 bg-[#081014] rounded flex items-center justify-center border border-gray-800 transition-all duration-300 group-hover:bg-emerald-400/10">
+                {/* phone icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-emerald-400 transition-transform duration-300 hover:rotate-12">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12 1.05.37 2.07.73 3.03a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.05-1.05a2 2 0 0 1 2.11-.45c.96.36 1.98.61 3.03.73A2 2 0 0 1 22 16.92z" stroke="#10b981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Phone</div>
+                <div className="font-medium">070-5049567</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 bg-[#0b0f13] p-4 rounded-md border border-gray-800 shadow-sm animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400 cursor-pointer" style={{ animationDelay: '80ms' }}>
+              <div className="w-12 h-12 bg-[#081014] rounded flex items-center justify-center border border-gray-800 transition-all duration-300">
+                {/* mail icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-300 hover:scale-110">
+                  <path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8" stroke="#10b981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="3" y="4" width="18" height="16" rx="2" stroke="#10b981" strokeWidth="1.2"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Email</div>
+                <div className="font-medium">ayeshalakshan00@gmail.com</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 bg-[#0b0f13] p-4 rounded-md border border-gray-800 shadow-sm animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400 cursor-pointer" style={{ animationDelay: '160ms' }}>
+              <div className="w-12 h-12 bg-[#081014] rounded flex items-center justify-center border border-gray-800 transition-all duration-300">
+                {/* location icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-300 hover:scale-110">
+                  <path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z" stroke="#10b981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="12" cy="10" r="2.5" fill="#10b981" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Address</div>
+                <div className="font-medium">Savinda, Narandeniya, kamburupitiya</div>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
