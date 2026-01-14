@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import AnimatedBackground from "../Components/AnimatedBackground";
 
 // Use videos from public folder for proper deployment
 const BASE_URL = import.meta.env.BASE_URL;
@@ -91,7 +92,11 @@ export default function Projects() {
 
 
   return (
-    <main className="bg-[#0f1724] text-white min-h-screen py-20">
+    <main className="relative text-white min-h-screen py-20 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #0a0e1a 0%, #0f1724 50%, #000000 100%)'
+    }}>
+      <AnimatedBackground />
+      <div className="relative z-10">
       <section className="max-w-6xl mx-auto px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: project selector and details */}
@@ -219,6 +224,7 @@ export default function Projects() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }

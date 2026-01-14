@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import CertSlider from "../Components/CertSlider";
+import AnimatedBackground from "../Components/AnimatedBackground";
 
 const experiences = [
+  {
+    title: "CI/CD Pipeline Engineer",
+    company: "GitHub • Nov 2025 – Dec 2025",
+    bullets: [
+      "Built CI/CD pipelines with Jenkins, automated Docker container deployments, and Kubernetes orchestration",
+      "Implemented code quality checks with SonarQube and managed Docker images via Docker Hub",
+      "Technologies: Jenkins, GitHub, Docker, Docker Hub, Kubernetes, SonarQube, WSL2"
+    ],
+  },
   {
     title: "Full Stack Developer",
     company: "Tech Solutions Inc.",
@@ -156,7 +166,11 @@ export default function Resume() {
   const [active, setActive] = useState("Experience");
 
   return (
-    <main className="bg-[#0f1724] text-white min-h-screen py-16">
+    <main className="relative text-white min-h-screen py-20 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #0a0e1a 0%, #0f1724 50%, #000000 100%)'
+    }}>
+      <AnimatedBackground />
+      <div className="relative z-10">
       <section className="max-w-6xl mx-auto px-6 lg:px-0">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left column: vertical menu */}
@@ -221,7 +235,7 @@ export default function Resume() {
 
             {active === "About" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group bg-[#0b0f13] p-8 sm:p-10 rounded-md border border-gray-800 animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400 min-h-40 sm:min-h-44 md:min-h-48">
+                <div className="group bg-white/5 backdrop-blur-sm p-8 sm:p-10 rounded-lg border border-gray-800/50 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 min-h-40 sm:min-h-44 md:min-h-48">
                   <h4 className="text-xl sm:text-2xl font-semibold mb-4 transition-colors duration-200 group-hover:text-emerald-400">About me</h4>
                   <p className="text-gray-300 mb-4 text-sm sm:text-base transition-colors duration-200 group-hover:text-gray-100">BICT undergraduate passionate about DevOps, cloud computing, and building secure, automated systems.</p>
                   <ul className="text-sm text-gray-300 space-y-2">
@@ -237,7 +251,7 @@ export default function Resume() {
                   </ul>
                 </div>
 
-                <div className="group bg-[#0b0f13] p-8 sm:p-10 rounded-md border border-gray-800 animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400 min-h-40 sm:min-h-44 md:min-h-48" style={{ animationDelay: "120ms" }}>
+                <div className="group bg-white/5 backdrop-blur-sm p-8 sm:p-10 rounded-lg border border-gray-800/50 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 min-h-40 sm:min-h-44 md:min-h-48">
                   <h4 className="text-xl sm:text-2xl font-semibold mb-4 transition-colors duration-200 group-hover:text-emerald-400">Contact</h4>
                   <ul className="text-sm sm:text-base text-gray-300 space-y-3">
                     <li><span className="text-gray-400 transition-colors duration-200 group-hover:text-emerald-300">Phone</span>: <span className="font-medium transition-colors duration-200 group-hover:text-gray-100">070-5049567</span></li>
@@ -251,8 +265,7 @@ export default function Resume() {
                 {skills.map((s, i) => (
                     <div
                       key={s.id}
-                      className="group bg-[#0b0f13] h-28 rounded-md flex flex-col items-center justify-center text-xl text-gray-100 shadow-sm border border-gray-800 animate-fade-up transform transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:border-emerald-400 cursor-pointer"
-                      style={{ animationDelay: `${i * 80}ms` }}
+                      className="group bg-white/5 backdrop-blur-sm h-28 rounded-lg flex flex-col items-center justify-center text-xl text-gray-100 border border-gray-800/50 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 cursor-pointer"
                       aria-label={s.label}
                     >
                       <div className="mb-3 text-gray-100 transform transition-transform duration-300 group-hover:scale-110 group-hover:opacity-95">
@@ -263,24 +276,24 @@ export default function Resume() {
                   ))}
               </div>
             ) : active === "Experience" ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 scrollbar-green max-h-[60vh] overflow-auto pr-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {experiences.map((exp, i) => (
                   <article
                     key={exp.title}
-                    className="group bg-[#0b0f13] p-5 rounded-md shadow-sm border border-gray-800 animate-fade-up transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 cursor-pointer"
-                    style={{ animationDelay: `${i * 120}ms` }}
+                    className="group relative bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-gray-800/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 cursor-pointer"
                   >
-                    <div className="text-emerald-400 text-sm font-medium mb-2 transition-colors duration-200 group-hover:text-emerald-300">{exp.period}</div>
-                    <h4 className="text-lg font-semibold mb-1 transition-colors duration-200 group-hover:text-emerald-400">{exp.title}</h4>
-                    <div className="text-sm text-gray-400 mb-3 transition-colors duration-200 group-hover:text-gray-300">{exp.company}</div>
-                    <ul className="text-gray-300 text-sm space-y-1">
-                      {exp.bullets.map((b, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="mt-1 text-emerald-400 transition-colors duration-200 group-hover:text-emerald-300">•</span>
-                          <span className="transition-colors duration-200 group-hover:text-gray-100">{b}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div>
+                      <h4 className="text-xl font-bold mb-2 transition-colors duration-200 group-hover:text-emerald-400">{exp.title}</h4>
+                      <div className="text-sm text-emerald-400 mb-3 transition-colors duration-200 group-hover:text-emerald-300">{exp.company}</div>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        {exp.bullets.map((b, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="mt-1 text-emerald-400 transition-colors duration-200 group-hover:text-emerald-300">•</span>
+                            <span className="transition-colors duration-200 group-hover:text-gray-100">{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -292,6 +305,7 @@ export default function Resume() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }

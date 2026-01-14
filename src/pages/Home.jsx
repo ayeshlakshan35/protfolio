@@ -1,19 +1,105 @@
-import React from "react";
+import React, { useEffect } from "react";
 import profile from "../assets/profile.jpg";
+import AnimatedBackground from "../Components/AnimatedBackground";
 
 export default function Home() {
+  const handleDownloadCV = () => {
+    // Open CV in a new tab
+    window.open("/Ayesh.pdf", "_blank");
+  };
+
+  // Step-by-step looping letter animation controller
+  useEffect(() => {
+    const animateSequence = () => {
+      // Get all letter elements
+      const line1Letters = document.querySelectorAll('.letter-line1');
+      const line2Letters = document.querySelectorAll('.letter-line2');
+      
+      // Step 1: Reset both lines to base colors
+      line1Letters.forEach(letter => {
+        letter.style.color = '#e5e7eb'; // gray-200 base
+      });
+      line2Letters.forEach(letter => {
+        letter.style.color = '#00e6a8'; // green base
+      });
+      
+      let delay = 0;
+      
+      // Step 2: Animate "Hello I'm" letters to green one by one
+      line1Letters.forEach((letter, index) => {
+        setTimeout(() => {
+          letter.style.transition = 'color 0.3s ease-in-out';
+          letter.style.color = '#00e6a8'; // green
+        }, delay);
+        delay += 100; // 100ms between each letter
+      });
+      
+      // Step 3: After line1 completes, animate "Ayesha Lakshan" to white
+      const line1Duration = line1Letters.length * 100;
+      line2Letters.forEach((letter, index) => {
+        setTimeout(() => {
+          letter.style.transition = 'color 0.3s ease-in-out';
+          letter.style.color = '#ffffff'; // white
+        }, line1Duration + (index * 100));
+      });
+      
+      // Step 4: Calculate total duration, wait, then restart
+      const totalDuration = line1Duration + (line2Letters.length * 100) + 300; // +300ms for last letter animation
+      const pauseDuration = 1800; // 1.8s pause before restart
+      
+      setTimeout(() => {
+        animateSequence(); // Loop: restart the entire sequence
+      }, totalDuration + pauseDuration);
+    };
+    
+    // Start the animation loop
+    animateSequence();
+  }, []);
+
   return (
-    <main className="bg-[#0f1724] text-white min-h-screen">
+    <main className="relative text-white min-h-screen overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #0a0e1a 0%, #0f1724 50%, #000000 100%)'
+    }}>
+      {/* Animated particle background */}
+      <AnimatedBackground />
+      
+      {/* Content wrapper with relative positioning to appear above background */}
+      <div className="relative z-10">
       <section id="home" className="max-w-6xl mx-auto px-6 lg:px-0 py-20">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: Intro */}
           <div className="lg:w-1/2 w-full">
-            <p className="text-sm text-gray-300 mb-4">DevOps Engineer</p>
+            <p className="text-lg sm:text-xl font-semibold text-emerald-300 tracking-wide mb-5">DevOps Engineer</p>
 
-            <h2 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-              Hello I&apos;m
-              <span className="block text-5xl sm:text-6xl text-emerald-400">
-                Ayesha Lakshan
+            <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
+              {/* Line 1: "Hello I'm" - animates to green first */}
+              <span className="inline">
+                <span className="letter-line1 inline-block">H</span>
+                <span className="letter-line1 inline-block">e</span>
+                <span className="letter-line1 inline-block">l</span>
+                <span className="letter-line1 inline-block">l</span>
+                <span className="letter-line1 inline-block">o</span>
+                <span className="letter-line1 inline-block"> </span>
+                <span className="letter-line1 inline-block">I</span>
+                <span className="letter-line1 inline-block">'</span>
+                <span className="letter-line1 inline-block">m</span>
+              </span>
+              {/* Line 2: "Ayesha Lakshan" - animates to white after line 1 */}
+              <span className="block text-4xl sm:text-5xl font-semibold">
+                <span className="letter-line2 inline-block">A</span>
+                <span className="letter-line2 inline-block">y</span>
+                <span className="letter-line2 inline-block">e</span>
+                <span className="letter-line2 inline-block">s</span>
+                <span className="letter-line2 inline-block">h</span>
+                <span className="letter-line2 inline-block">a</span>
+                <span className="letter-line2 inline-block"> </span>
+                <span className="letter-line2 inline-block">L</span>
+                <span className="letter-line2 inline-block">a</span>
+                <span className="letter-line2 inline-block">k</span>
+                <span className="letter-line2 inline-block">s</span>
+                <span className="letter-line2 inline-block">h</span>
+                <span className="letter-line2 inline-block">a</span>
+                <span className="letter-line2 inline-block">n</span>
               </span>
             </h2>
 
@@ -24,9 +110,9 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex items-center gap-4">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-5 py-2 border border-emerald-400 rounded-full text-emerald-400 hover:bg-emerald-900/30"
+              <button
+                onClick={handleDownloadCV}
+                className="inline-flex items-center gap-2 px-5 py-2 border border-emerald-400 rounded-full text-emerald-400 hover:bg-emerald-900/30 cursor-pointer"
               >
                 <img
                   src={profile}
@@ -34,7 +120,7 @@ export default function Home() {
                   className="w-4 h-4 rounded-full object-cover"
                 />
                 DOWNLOAD CV
-              </a>
+              </button>
 
               <div className="flex items-center gap-3">
                 {/* GitHub */}
@@ -107,6 +193,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }

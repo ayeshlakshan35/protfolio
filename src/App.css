@@ -57,3 +57,236 @@
 	}
 }
 
+/* ===== ANIMATED BACKGROUND STYLES ===== */
+/* Additional overlay effects for enhanced premium feel */
+
+/* Subtle gradient overlay to add depth */
+.gradient-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(
+		ellipse at top,
+		rgba(16, 185, 129, 0.03) 0%,
+		transparent 50%
+	);
+	pointer-events: none;
+	z-index: 1;
+}
+
+/* Optional: Add ambient glow effect */
+@keyframes ambient-pulse {
+	0%, 100% { opacity: 0.3; }
+	50% { opacity: 0.5; }
+}
+
+.ambient-glow {
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(
+		circle at 30% 30%,
+		rgba(16, 185, 129, 0.08) 0%,
+		transparent 40%
+	);
+	animation: ambient-pulse 8s ease-in-out infinite;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Performance optimization for animations */
+.animated-section {
+	will-change: transform;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+}
+/* ===== ANIMATED TEXT GRADIENT EFFECT ===== */
+/* Creates a moving gradient animation visible only inside text */
+
+@keyframes gradient-flow {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes gradient-shift {
+	0%, 100% {
+		background-position: 0% 50%;
+	}
+	25% {
+		background-position: 100% 50%;
+	}
+	50% {
+		background-position: 100% 100%;
+	}
+	75% {
+		background-position: 0% 100%;
+	}
+}
+
+/* Main animated text class */
+.animated-gradient-text {
+	/* Create multi-color gradient that will animate */
+	background: linear-gradient(
+		110deg,
+		#10b981 0%,      /* emerald-500 */
+		#34d399 15%,     /* emerald-400 */
+		#6ee7b7 30%,     /* emerald-300 */
+		#a7f3d0 45%,     /* emerald-200 */
+		#6ee7b7 60%,     /* emerald-300 */
+		#34d399 75%,     /* emerald-400 */
+		#10b981 90%,     /* emerald-500 */
+		#059669 100%     /* emerald-600 */
+	);
+	
+	/* Make gradient much larger than text for smooth animation */
+	background-size: 300% 300%;
+	
+	/* Animate the gradient position */
+	animation: gradient-flow 8s ease-in-out infinite;
+	
+	/* Clip background to text shape (the magic!) */
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	
+	/* Make text transparent to reveal gradient */
+	-webkit-text-fill-color: transparent;
+	
+	/* Fallback for browsers that don't support background-clip: text */
+	color: #10b981; /* emerald-500 */
+	
+	/* Add subtle text shadow for depth and readability */
+	text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+	
+	/* Performance optimization */
+	will-change: background-position;
+	
+	/* Smooth font rendering */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Alternative slower, more professional animation */
+.animated-gradient-text-slow {
+	background: linear-gradient(
+		120deg,
+		#059669 0%,      /* emerald-600 - darker */
+		#10b981 20%,     /* emerald-500 */
+		#34d399 40%,     /* emerald-400 - bright */
+		#6ee7b7 50%,     /* emerald-300 - brightest */
+		#34d399 60%,     /* emerald-400 - bright */
+		#10b981 80%,     /* emerald-500 */
+		#059669 100%     /* emerald-600 - darker */
+	);
+	
+	background-size: 400% 400%;
+	animation: gradient-shift 12s ease-in-out infinite;
+	
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	
+	/* Fallback */
+	color: #10b981;
+	
+	/* Soft glow for readability */
+	text-shadow: 0 0 40px rgba(16, 185, 129, 0.4),
+	             0 0 20px rgba(16, 185, 129, 0.2);
+	
+	will-change: background-position;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Shimmer effect variant - faster but still smooth */
+.animated-gradient-text-shimmer {
+	background: linear-gradient(
+		90deg,
+		#047857 0%,      /* emerald-700 */
+		#059669 10%,     /* emerald-600 */
+		#10b981 20%,     /* emerald-500 */
+		#34d399 30%,     /* emerald-400 */
+		#6ee7b7 40%,     /* emerald-300 */
+		#a7f3d0 50%,     /* emerald-200 - peak brightness */
+		#6ee7b7 60%,     /* emerald-300 */
+		#34d399 70%,     /* emerald-400 */
+		#10b981 80%,     /* emerald-500 */
+		#059669 90%,     /* emerald-600 */
+		#047857 100%     /* emerald-700 */
+	);
+	
+	background-size: 200% auto;
+	animation: gradient-flow 6s linear infinite;
+	
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	
+	/* Fallback */
+	color: #10b981;
+	
+	/* Stronger glow */
+	text-shadow: 0 0 50px rgba(16, 185, 129, 0.5),
+	             0 0 25px rgba(52, 211, 153, 0.3);
+	
+	will-change: background-position;
+}
+
+/* Hover effect to pause animation (optional) */
+.animated-gradient-text:hover,
+.animated-gradient-text-slow:hover,
+.animated-gradient-text-shimmer:hover {
+	animation-play-state: paused;
+}
+
+/* Extra glow outline for dark backgrounds */
+.text-glow-emerald {
+	filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.4))
+	        drop-shadow(0 0 20px rgba(16, 185, 129, 0.2));
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+	.animated-gradient-text,
+	.animated-gradient-text-slow,
+	.animated-gradient-text-shimmer {
+		animation: none;
+		background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+		background-size: 100% 100%;
+	}
+}
+
+/* ===== LETTER-BY-LETTER COLOR ANIMATION (JS-CONTROLLED LOOPING) ===== */
+/* Sequential looping animation controlled by JavaScript:
+   Step 1: Both lines start with base colors (gray for line1, green for line2)
+   Step 2: "Hello I'm" letters animate to green one by one
+   Step 3: "Ayesha Lakshan" letters animate to white one by one (after line1 completes)
+   Step 4: Pause 1.8s, then reset and loop forever
+*/
+
+/* Line 1: "Hello I'm" letters - base color gray, animates to green */
+.letter-line1 {
+	display: inline-block;
+	color: #e5e7eb; /* gray-200 - starting color */
+	will-change: color;
+}
+
+/* Line 2: "Ayesha Lakshan" letters - base color green, animates to white */
+.letter-line2 {
+	display: inline-block;
+	color: #00e6a8; /* teal green - starting color */
+	will-change: color;
+}

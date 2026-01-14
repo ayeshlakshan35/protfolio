@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import AnimatedBackground from '../Components/AnimatedBackground'
 
 const services = [
   {
@@ -42,11 +43,15 @@ const services = [
 
 export default function Services() {
   return (
-    <main className="bg-[#0f1724] text-white min-h-screen py-20">
+    <main className="relative text-white min-h-screen py-20 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #0a0e1a 0%, #0f1724 50%, #000000 100%)'
+    }}>
+      <AnimatedBackground />
+      <div className="relative z-10">
       <section className="max-w-6xl mx-auto px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {services.map((s) => (
-            <article key={s.id} className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 border-b border-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 rounded-md cursor-pointer">
+            <article key={s.id} className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-gray-800/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20 hover:border-emerald-400/50 cursor-pointer">
               <div className="shrink-0 w-12">
                 <div className="text-3xl md:text-4xl font-mono text-emerald-400 transition-transform duration-300 hover:scale-110">{String(s.id).padStart(2, '0')}</div>
               </div>
@@ -70,6 +75,7 @@ export default function Services() {
           ))}
         </div>
       </section>
+      </div>
     </main>
   )
 }
