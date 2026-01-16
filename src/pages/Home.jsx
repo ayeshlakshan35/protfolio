@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import profile from "../assets/profile.jpg";
+import cvPdf from "../assets/ayesh.pdf";
 import AnimatedBackground from "../Components/AnimatedBackground";
 
 export default function Home() {
   const handleDownloadCV = () => {
-    const url = `${import.meta.env.BASE_URL}ayesh.pdf`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    const a = document.createElement("a");
+    a.href = cvPdf;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.click();
   };
 
   // Step-by-step looping letter animation controller
