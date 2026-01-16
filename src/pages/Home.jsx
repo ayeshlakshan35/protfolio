@@ -89,7 +89,7 @@ export default function Home() {
                   <span className="letter-line1 inline-block">l</span>
                   <span className="letter-line1 inline-block">l</span>
                   <span className="letter-line1 inline-block">o</span>
-                  <span className="letter-line1 inline-block"> </span>
+                  <span className="letter-line1 inline-block">&nbsp;</span>
                   <span className="letter-line1 inline-block">I</span>
                   <span className="letter-line1 inline-block">'</span>
                   <span className="letter-line1 inline-block">m</span>
@@ -102,7 +102,7 @@ export default function Home() {
                   <span className="letter-line2 inline-block">s</span>
                   <span className="letter-line2 inline-block">h</span>
                   <span className="letter-line2 inline-block">a</span>
-                  <span className="letter-line2 inline-block"> </span>
+                  <span className="letter-line2 inline-block">&nbsp;</span>
                   <span className="letter-line2 inline-block">L</span>
                   <span className="letter-line2 inline-block">a</span>
                   <span className="letter-line2 inline-block">k</span>
