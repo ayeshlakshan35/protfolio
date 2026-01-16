@@ -5,11 +5,6 @@ import AnimatedBackground from "../Components/AnimatedBackground";
 const BASE_URL = import.meta.env.BASE_URL;
 
 
-
-// NOTE: do NOT statically import a video that might be absent at build time.
-// Put the demo video in `public/assets/dashboard-demo.mp4` and reference it as
-// '/assets/dashboard-demo.mp4' below so the dev server serves it statically.
-
 const projects = [
   {
     id: 1,
@@ -36,6 +31,13 @@ const projects = [
     description: "Developed a JavaFX-based application that evaluates loan eligibility and risk by collecting and analyzing user financial and personal data. Implemented object-oriented design principles to create a robust, user-friendly system that provides actionable insights for loan approval decisions.",
     video: `${BASE_URL}assets/videos/loanshield.mp4`,
     repoFrontend: 'https://github.com/kushanumayangana/LoanShield.git',
+  },
+  {
+    id: 4,
+    title: "CI/CD Pipeline",
+    description: "Built CI/CD pipelines with Jenkins, automated Docker container deployments, and Kubernetes orchestration. Implemented code quality checks with SonarQube and managed Docker images via Docker Hub. Demonstrated proficiency in DevOps practices and infrastructure automation.",
+    video: `${BASE_URL}assets/videos/cicd.mp4`,
+    repoFrontend: 'https://github.com/ayeshlakshan35/cicd_pipeline_PRACTICE.git',
   },
 ];
 
@@ -113,10 +115,10 @@ export default function Projects() {
                       setExpanded((e) => (e === idx ? null : idx));
                     }}
                     aria-expanded={expanded === idx}
-                    className={`w-full text-left py-3 px-4 rounded-md font-medium transition-colors duration-200 ${
+                    className={`w-full text-left py-3 px-4 rounded-lg font-medium transition-all duration-200 border ${
                       index === idx
-                        ? "bg-emerald-400 text-black"
-                        : "bg-gray-800 text-gray-300"
+                        ? "bg-emerald-400 text-black border-emerald-400"
+                        : "bg-white/5 backdrop-blur-sm text-gray-300 border-gray-800/50 hover:border-emerald-400/50"
                     }`}
                   >
                     <div className="font-semibold">{proj.title}</div>
@@ -125,7 +127,7 @@ export default function Projects() {
 
                   {/* Details panel shown inline directly below the clicked project */}
                   {expanded === idx && (
-                    <div className="mt-3 bg-[#0b0f13] p-6 rounded-md border border-gray-800 animate-accordion-open">
+                    <div className="mt-3 bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-gray-800/50 animate-accordion-open">
                       <h4 className="text-xl font-semibold mb-2">
                         {proj.title}
                       </h4>
@@ -152,7 +154,7 @@ export default function Projects() {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-2 bg-gray-900/30 text-emerald-400 px-3 py-1 rounded text-sm hover:bg-emerald-400 hover:text-black transition repo-link-focus"
                             >
-                              Backend
+                              Github-BackEnd
                             </a>
                           )}
 
@@ -163,7 +165,7 @@ export default function Projects() {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-2 bg-gray-900/30 text-emerald-400 px-3 py-1 rounded text-sm hover:bg-emerald-400 hover:text-black transition repo-link-focus"
                             >
-                              Frontend
+                              Github
                             </a>
                           )}
                         </div>

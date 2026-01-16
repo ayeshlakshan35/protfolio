@@ -14,7 +14,7 @@ export default function Contact() {
 
     try {
       await emailjs.sendForm(
-        "service_tees5n7",
+        "service_tves5n7",
         "template_zf93qxn",
         formRef.current,
         { publicKey: "tJ8QLn07TVbtaD-BS" }
@@ -94,7 +94,7 @@ export default function Contact() {
                   name="service"                
                   defaultValue=""
                   required
-                  className="sm:col-span-2 bg-white/5 backdrop-blur-sm border border-gray-800/50 rounded px-3 py-2 text-gray-200 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all"
+                  className="sm:col-span-2 bg-slate-900/60 backdrop-blur-md border border-gray-600/50 rounded px-3 py-2 text-gray-100 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all [&>option]:bg-slate-800 [&>option]:text-gray-100"
                 >
                   <option value="" disabled>Select a service</option>
                   <option>Web Development</option>
