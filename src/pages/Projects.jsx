@@ -36,7 +36,7 @@ const projects = [
     id: 4,
     title: "CI/CD Pipeline",
     description: "Built CI/CD pipelines with Jenkins, automated Docker container deployments, and Kubernetes orchestration. Implemented code quality checks with SonarQube and managed Docker images via Docker Hub. Demonstrated proficiency in DevOps practices and infrastructure automation.",
-    video: `${BASE_URL}assets/videos/cicd.mp4`,
+    video: `${BASE_URL}assets/videos/cicdnew.mp4`,
     repoFrontend: 'https://github.com/ayeshlakshan35/cicd_pipeline_PRACTICE.git',
   },
 ];
