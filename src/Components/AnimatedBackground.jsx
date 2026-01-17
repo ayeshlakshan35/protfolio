@@ -29,7 +29,7 @@ export default function AnimatedBackground() {
     resizeCanvas();
 
     // Particle configuration
-    const particleCount = 50; // Number of particles
+    const particleCount = 25; // Number of particles (reduced from 50)
     const particles = [];
 
     /**
@@ -46,10 +46,10 @@ export default function AnimatedBackground() {
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = -10; // Start above viewport
-        this.size = Math.random() * 3 + 1; // Size: 1-4px
-        this.speedX = (Math.random() - 0.5) * 0.3; // Slow horizontal drift
-        this.speedY = Math.random() * 0.3 + 0.2; // Slow downward float (0.2-0.5)
-        this.opacity = Math.random() * 0.3 + 0.1; // Low opacity (0.1-0.4)
+        this.size = Math.random() * 2 + 0.5; // Size: 0.5-2.5px (smaller)
+        this.speedX = (Math.random() - 0.5) * 0.08; // Very slow horizontal drift
+        this.speedY = Math.random() * 0.08 + 0.05; // Very slow downward float (0.05-0.13)
+        this.opacity = Math.random() * 0.2 + 0.05; // Very low opacity (0.05-0.25)
         this.hue = Math.random() * 30 + 150; // Green-cyan hue range (150-180)
       }
 

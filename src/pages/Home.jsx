@@ -72,9 +72,9 @@ export default function Home() {
       <AnimatedBackground />
 
       {/* Content wrapper with relative positioning to appear above background */}
-      <div className="relative z-10">
-        <section id="home" className="max-w-6xl mx-auto px-6 lg:px-0 py-20">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+      <div className="relative z-10 min-h-screen flex items-center justify-center">
+        <section id="home" className="max-w-6xl mx-auto px-6 lg:px-0">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             {/* Left: Intro */}
             <div className="lg:w-1/2 w-full">
               <p className="text-lg sm:text-xl font-semibold text-emerald-300 tracking-wide mb-5">
@@ -207,12 +207,12 @@ export default function Home() {
             {/* Right: Portrait */}
             <div className="lg:w-1/2 w-full flex justify-end">
               <div className="relative w-100 h-100 sm:w-100 sm:h-100portrait-container">
-                <div className="absolute inset-0 flex items-center justify-center p-3">
+                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
                     <img
                       src={profile}
                       alt="portrait"
-                      className="w-full h-full object-cover block"
+                      className="w-full h-full object-cover block scale-125"
                     />
                   </div>
                 </div>

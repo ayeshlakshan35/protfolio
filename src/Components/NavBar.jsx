@@ -1,75 +1,128 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+
+  // Detect scroll position and update active section
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.scroll-container');
+    if (!scrollContainer) return;
+
+    const handleScroll = () => {
+      const containerScrollTop = scrollContainer.scrollTop;
+      
+      // Change navbar background on scroll
+      setScrolled(containerScrollTop > 50);
+
+      // Detect which section is in view
+      const sections = ['home', 'services', 'resume', 'projects', 'contact'];
+      let currentSection = 'home';
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          
+          // Check if the top of the section is in the upper half of viewport
+          // This makes the navbar update as soon as a section enters view
+          if (rect.top <= 150 && rect.bottom > 150) {
+            currentSection = sectionId;
+          }
+        }
+      }
+      
+      setActiveSection(currentSection);
+    };
+
+    // Initial check
+    handleScroll();
+
+    scrollContainer.addEventListener('scroll', handleScroll);
+    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Function to scroll to section
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionId);
+      setIsOpen(false);
+    }
+  };
 
   // Function to style active links
-  const activeClass =
-    "text-emerald-400 relative py-2 after:block after:w-full after:h-0.5 after:bg-emerald-400 after:mt-2";
-  const inactiveClass = "text-gray-300 hover:text-white";
+  const getLinkClass = (section) => {
+    return activeSection === section
+      ? "text-emerald-400 relative py-2 after:block after:w-full after:h-0.5 after:bg-emerald-400 after:mt-2 cursor-pointer"
+      : "text-gray-300 hover:text-white cursor-pointer";
+  };
 
   return (
-    <header className="w-full bg-[#0f1724] text-white">
+    <header className={`w-full text-white fixed top-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-[#0f1724] shadow-lg' : 'bg-[#0f1724]/80 backdrop-blur-sm'
+    }`}>
       <nav className="max-w-6xl mx-auto px-6 md:px-8 lg:px-0 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <NavLink to="/" className="text-xl font-semibold tracking-tight">
+          <span onClick={() => scrollToSection('home')} className="text-xl font-semibold tracking-tight cursor-pointer">
             YeSh
-          </NavLink>
+          </span>
           <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block -mb-1" aria-hidden="true" />
         </div>
 
   {/* Desktop Menu */}
   <ul className="hidden md:flex items-center gap-8 text-sm font-medium ml-auto">
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
+            <span
+              onClick={() => scrollToSection('home')}
+              className={getLinkClass('home')}
             >
               Home
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink
-              to="/Services"
-              className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
+            <span
+              onClick={() => scrollToSection('services')}
+              className={getLinkClass('services')}
             >
               Services
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink
-              to="/Resume"
-              className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
+            <span
+              onClick={() => scrollToSection('resume')}
+              className={getLinkClass('resume')}
             >
               Resume
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink
-              to="/Projects"
-              className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
+            <span
+              onClick={() => scrollToSection('projects')}
+              className={getLinkClass('projects')}
             >
               Projects
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink
-              to="/Contact"
-              className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
+            <span
+              onClick={() => scrollToSection('contact')}
+              className={getLinkClass('contact')}
             >
               Contact
-            </NavLink>
+            </span>
           </li>
           {/* Desktop: Hire me placed inside the desktop menu so spacing matches other nav items */}
           <li>
-            <NavLink
-              to="/Contact"
+            <button
+              onClick={() => scrollToSection('contact')}
               className="hidden md:inline-block px-4 py-1.5 bg-emerald-400 text-black rounded-full font-medium hover:opacity-90"
             >
               Hire me
-            </NavLink>
+            </button>
           </li>
         </ul>
 
@@ -89,38 +142,37 @@ export default function NavBar() {
       {isOpen && (
         <ul className="md:hidden bg-[#0f1724] text-white flex flex-col items-center gap-6 py-4">
           <li>
-            <NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+            <span onClick={() => scrollToSection('home')} className={getLinkClass('home')}>
               Home
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink to="/Services" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+            <span onClick={() => scrollToSection('services')} className={getLinkClass('services')}>
               Services
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink to="/Resume" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+            <span onClick={() => scrollToSection('resume')} className={getLinkClass('resume')}>
               Resume
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink to="/Projects" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+            <span onClick={() => scrollToSection('projects')} className={getLinkClass('projects')}>
               Projects
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink to="/Contact" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+            <span onClick={() => scrollToSection('contact')} className={getLinkClass('contact')}>
               Contact
-            </NavLink>
+            </span>
           </li>
           <li>
-            <NavLink
-              to="/Contact"
+            <button
+              onClick={() => scrollToSection('contact')}
               className="px-4 py-1.5 bg-emerald-400 text-black rounded-full font-medium hover:opacity-90"
-              onClick={() => setIsOpen(false)}
             >
               Hire me
-            </NavLink>
+            </button>
           </li>
         </ul>
       )}

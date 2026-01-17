@@ -15,15 +15,28 @@ export default function App() {
   return (
     <Router>
       <Navbar />
-
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      
+      <div className="scroll-container">
+        <section className="scroll-section" id="home">
+          <Home />
+        </section>
+        
+        <section className="scroll-section" id="services">
+          <Services />
+        </section>
+        
+        <section className="scroll-section" id="resume">
+          <Resume />
+        </section>
+        
+        <section className="scroll-section" id="projects">
+          <Projects />
+        </section>
+        
+        <section className="scroll-section" id="contact">
+          <Contact />
+        </section>
+      </div>
 
       <Footer />
     </Router>
