@@ -5,9 +5,12 @@ import fronendImg from '../assets/fronend.jpg'
 import lindinImg from '../assets/lindin.jpg'
 import pythonImg from '../assets/python.jpg'
 import webDesignImg from '../assets/webDesign.jpg'
-import kkImg from '../assets/kk.png'
+import DockerImg from '../assets/kk.png'
 import jenkinsImg from '../assets/jenkins.png'
 import linuxImg from '../assets/linux.png'
+import K8sImg from '../assets/Kubernetes.png'
+
+
 
 // Simple certificate slider. Place your certificate images in src/assets/certs/
 // and list them in the `images` array below (or pass them via props if desired).
@@ -15,7 +18,8 @@ export default function CertSlider({ images }) {
   const imgs = images && images.length ? images : [
     jenkinsImg,
     linuxImg,
-    kkImg,
+    K8sImg,
+    DockerImg,
     fronendImg,
     pythonImg,
     webDesignImg,

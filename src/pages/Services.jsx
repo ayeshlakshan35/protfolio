@@ -1,47 +1,51 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import AnimatedBackground from '../Components/AnimatedBackground'
 
 const services = [
   {
     id: 1,
-    title: 'Web Development',
-    desc: 'I design and build responsive, high-performance websites using modern technologies to deliver smooth, engaging user experiences.',
-    meta: 'Technologies: HTML5, CSS3, JavaScript, React',
+    title: 'Kubernetes Troubleshooting',
+    desc: 'I troubleshoot Kubernetes pod errors, deployment failures, service issues, ingress routing problems, and YAML configuration errors to keep applications running smoothly.',
+    meta: 'Technologies: Kubernetes, kubectl, Minikube, NGINX Ingress Controller',
   },
   {
     id: 2,
-    title: 'UI/UX Design',
-    desc: 'I craft intuitive and visually appealing interfaces that focus on usability and aesthetic balance, ensuring great user engagement.',
-    meta: 'Tools: Figma',
+    title: 'Docker & Containerization',
+    desc: 'I containerize web applications, fix Docker image and container issues, and create reliable Docker-based development and deployment workflows.',
+    meta: 'Tools: Docker, Kubernetes, Docker Hub, Linux, YAML',
   },
   {
     id: 3,
-    title: 'Logo Design',
-    desc: 'I create memorable and impactful logos that represent your brand identity with simplicity and creativity.',
-    meta: 'Tools: Photoshop',
+    title: 'CI/CD Pipeline Automation',
+    desc: 'I build automated CI/CD pipelines for code integration, Docker image builds, testing, quality checks, and Kubernetes deployments.',
+    meta: 'Tools: GitHub Actions, Jenkins, GitLab CI, Docker, Kubernetes,SonarQube',
   },
   {
     id: 4,
-    title: 'Mobile App Development',
-    desc: 'I develop cross-platform mobile applications with smooth performance and modern interfaces to deliver seamless user experiences.',
-    meta: 'Technologies: Flutter, React Native',
+    title: 'Cloud & DevOps',
+    desc: 'I help deploy and manage scalable cloud-based application environments using DevOps practices, automation, and infrastructure tools.',
+    meta: 'Technologies: AWS, Azure, GCP, Terraform, Ansible',
   },
   {
     id: 5,
     title: 'Backend Development',
     desc: 'I build secure and scalable backend systems that power modern web and mobile applications.',
-    meta: 'Technologies: Node.js, Express, MongoDB, MySQL',
+    meta: 'Technologies: Node.js, Express, MongoDB, MySQL, REST APIs, GraphQL',
   },
   {
     id: 6,
-    title: 'Cloud & DevOps',
-    desc: 'I help automate deployment, improve scalability, and manage applications in the cloud efficiently.',
-    meta: 'Technologies: Docker, GitHub Actions, Azure',
+    title: 'Web & Mobile Development',
+    desc: 'I develop responsive web and cross-platform mobile applications with modern user interfaces and smooth user experiences.',
+    meta: 'Technologies: React, React Native, TypeScript, Tailwind CSS, firebase',
   },
 ]
 
 export default function Services() {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact')
+    contactSection?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <main className="relative text-white min-h-screen py-20 overflow-hidden" style={{
       background: 'linear-gradient(135deg, #0a0e1a 0%, #0f1724 50%, #000000 100%)'
@@ -63,13 +67,14 @@ export default function Services() {
               </div>
 
               <div className="mt-2 md:mt-0">
-                <Link
-                  to="/Contact"
+                <button
+                  type="button"
+                  onClick={scrollToContact}
                   className="w-12 h-12 rounded-full bg-white/8 flex items-center justify-center border border-gray-700 hover:bg-emerald-400 hover:text-black transition-all duration-300 hover:scale-110 hover:rotate-45"
-                  aria-label="Hire me"
+                  aria-label="Go to contact"
                 >
                   <span className="text-xl">→</span>
-                </Link>
+                </button>
               </div>
             </article>
           ))}

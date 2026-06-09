@@ -25,7 +25,7 @@ export default function Footer() {
 					</a>
 
 					<a
-						href="https://www.linkedin.com/in/ayesh-lakshan-217408333/"
+						href="https://www.linkedin.com/in/ayesha-lakshan-217408333/"
 						aria-label="linkedin"
 						className="w-8 h-8 rounded-full border border-emerald-400 flex items-center justify-center text-emerald-400"
 					>

@@ -97,10 +97,10 @@ export default function Contact() {
                   className="sm:col-span-2 bg-slate-900/60 backdrop-blur-md border border-gray-600/50 rounded px-3 py-2 text-gray-100 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all [&>option]:bg-slate-800 [&>option]:text-gray-100"
                 >
                   <option value="" disabled>Select a service</option>
-                  <option>Web Development</option>
-                  <option>UI/UX Design</option>
-                  <option>Logo Design</option>
-                  <option>Mobile App Development</option>
+                  <option>Kubernetes Troubleshooting</option>
+                  <option>Docker & Containerization</option>
+                  <option>CI/CD Pipeline Automation</option>
+                  <option>Web & Mobile Development</option>
                   <option>Backend Development</option>
                   <option>Cloud & DevOps</option>
                 </select>

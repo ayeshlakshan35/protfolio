@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import profile from "../assets/profile.jpg";
-import cvPdf from "../assets/ayesh.pdf";
+import cvPdf from "../assets/AyeshaLakshan-DevOps_Intern_CV.pdf";
 import AnimatedBackground from "../Components/AnimatedBackground";
 
 export default function Home() {
@@ -73,10 +73,10 @@ export default function Home() {
 
       {/* Content wrapper with relative positioning to appear above background */}
       <div className="relative z-10 min-h-screen flex items-center justify-center">
-        <section id="home" className="max-w-6xl mx-auto px-6 lg:px-0">
+        <section id="home" className="home-hero-section max-w-6xl mx-auto px-6 lg:px-0">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             {/* Left: Intro */}
-            <div className="lg:w-1/2 w-full">
+            <div className="home-hero-copy lg:w-1/2 w-full">
               <p className="text-lg sm:text-xl font-semibold text-emerald-300 tracking-wide mb-5">
                 DevOps Engineer
               </p>
@@ -113,17 +113,16 @@ export default function Home() {
                 </span>
               </h2>
 
-              <p className="mt-6 text-gray-300 max-w-xl">
-                BICT undergraduate passionate about DevOps, cloud computing, and
-                building secure, automated systems. Experienced in Java,
-                JavaScript, and databases, and exploring Linux, Docker, and
-                Azure.
+              <p className="home-hero-description mt-6 text-gray-300 max-w-xl">
+                DevOps-focused ICT undergraduate experienced in Docker, Kubernetes, Linux,
+                CI/CD pipelines, and cloud deployments. I build and troubleshoot stable,
+                scalable, and production-ready application environments.
               </p>
 
-              <div className="mt-8 flex items-center gap-4">
+              <div className="home-hero-actions mt-8 flex items-center gap-4">
                 <button
                   onClick={handleDownloadCV}
-                  className="inline-flex items-center gap-2 px-5 py-2 border border-emerald-400 rounded-full text-emerald-400 hover:bg-emerald-900/30 cursor-pointer"
+                  className="home-cv-button inline-flex items-center gap-2 px-5 py-2 border border-emerald-400 rounded-full text-emerald-400 hover:bg-emerald-900/30 cursor-pointer"
                 >
                   <img
                     src={profile}
@@ -133,7 +132,7 @@ export default function Home() {
                   DOWNLOAD CV
                 </button>
 
-                <div className="flex items-center gap-3">
+                <div className="home-social-links flex items-center gap-3">
                   {/* GitHub */}
                   <a
                     className="w-8 h-8 rounded-full border border-emerald-400 flex items-center justify-center text-emerald-400"
@@ -153,7 +152,7 @@ export default function Home() {
                   {/* LinkedIn */}
                   <a
                     className="w-8 h-8 rounded-full border border-emerald-400 flex items-center justify-center text-emerald-400"
-                    href="https://www.linkedin.com/in/ayesh-lakshan-217408333/"
+                    href="https://www.linkedin.com/in/ayesha-lakshan-217408333/"
                     aria-label="linkedin"
                   >
                     <svg
@@ -205,8 +204,8 @@ export default function Home() {
             </div>
 
             {/* Right: Portrait */}
-            <div className="lg:w-1/2 w-full flex justify-end">
-              <div className="relative w-100 h-100 sm:w-100 sm:h-100portrait-container">
+            <div className="home-hero-portrait lg:w-1/2 w-full flex justify-end">
+              <div className="relative portrait-container">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
                     <img

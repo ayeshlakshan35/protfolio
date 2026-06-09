@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import AnimatedBackground from "../Components/AnimatedBackground";
+import collabnoteArchitecture from "../assets/collabnnote minikube architecture.png";
+import collabnoteApp from "../assets/collab.png";
+import collabnoteTerminal1 from "../assets/terminal1.png";
+import collabnoteTerminal2 from "../assets/terminal2.png";
+import collabnoteTerminal3 from "../assets/terminal3.png";
+import collabnoteDashboard from "../assets/collabnote dashboard.png";
 
 // Use videos from public folder for proper deployment
 const BASE_URL = import.meta.env.BASE_URL;
@@ -8,6 +14,30 @@ const BASE_URL = import.meta.env.BASE_URL;
 const projects = [
   {
     id: 1,
+    title: "CI/CD Pipeline",
+    description: "Built CI/CD pipelines with Jenkins, automated Docker container deployments, and Kubernetes orchestration. Implemented code quality checks with SonarQube and managed Docker images via Docker Hub. Demonstrated proficiency in DevOps practices and infrastructure automation.",
+    video: `${BASE_URL}assets/videos/cicdnew.mp4`,
+    repoFrontend: 'https://github.com/ayeshlakshan35/cicd_pipeline_PRACTICE.git',
+  },
+  {
+    id: 2,
+    title: "CollabNote Kubernetes Deployment",
+    subtitle: "",
+    description:
+      "Containerized and deployed a MERN stack application using Docker, Kubernetes, Minikube, and NGINX Ingress. Configured separate frontend and backend services, Kubernetes Secrets, path-based routing, and MongoDB Atlas connectivity. Troubleshot ImagePullBackOff, ErrImagePull, local DNS, and Ingress routing issues.",
+    imageList: [
+      collabnoteArchitecture,
+      collabnoteApp,
+      collabnoteTerminal1,
+      collabnoteTerminal2,
+      collabnoteTerminal3,
+      collabnoteDashboard,
+    ],
+    repoFrontend: 'https://github.com/ayeshlakshan35/CollabNote.git',
+    liveLink: 'https://collabnote-client-yesh-gwgzcjace2c0eyh2.southeastasia-01.azurewebsites.net/login',
+  },
+  {
+    id: 3,
     title: "OneBlood",
     subtitle: "",
     description:
@@ -18,26 +48,19 @@ const projects = [
     repoFrontend: 'https://github.com/ayeshlakshan35/OneBlood-frontend.git',
   },
   {
-    id: 2,
-    title: "YummyFeelz",
-    subtitle: "",
-    description: "Yummy Feels is a restaurant website built with HTML, CSS, JavaScript, and PHP using XAMPP. It allows users to order meals online and book tables, while the admin can manage orders and reservations through a simple backend.",
-    video: `${BASE_URL}assets/videos/yummy.mp4`,
-    repoFrontend: 'https://github.com/ayeshlakshan35/YummyFeelz.git',
-  },
-  {
-    id: 3,
+    id: 4,
     title: "LoanShield",
     description: "Developed a JavaFX-based application that evaluates loan eligibility and risk by collecting and analyzing user financial and personal data. Implemented object-oriented design principles to create a robust, user-friendly system that provides actionable insights for loan approval decisions.",
     video: `${BASE_URL}assets/videos/loanshield.mp4`,
     repoFrontend: 'https://github.com/kushanumayangana/LoanShield.git',
   },
   {
-    id: 4,
-    title: "CI/CD Pipeline",
-    description: "Built CI/CD pipelines with Jenkins, automated Docker container deployments, and Kubernetes orchestration. Implemented code quality checks with SonarQube and managed Docker images via Docker Hub. Demonstrated proficiency in DevOps practices and infrastructure automation.",
-    video: `${BASE_URL}assets/videos/cicdnew.mp4`,
-    repoFrontend: 'https://github.com/ayeshlakshan35/cicd_pipeline_PRACTICE.git',
+    id: 5,
+    title: "YummyFeelz",
+    subtitle: "",
+    description: "Yummy Feels is a restaurant website built with HTML, CSS, JavaScript, and PHP using XAMPP. It allows users to order meals online and book tables, while the admin can manage orders and reservations through a simple backend.",
+    video: `${BASE_URL}assets/videos/yummy.mp4`,
+    repoFrontend: 'https://github.com/ayeshlakshan35/YummyFeelz.git',
   },
 ];
 
@@ -83,7 +106,7 @@ export default function Projects() {
         } else {
           videoRef.current.pause();
         }
-      } catch (e) {
+      } catch {
         // ignore errors (autoplay policies may block play())
       }
     }
@@ -112,6 +135,7 @@ export default function Projects() {
                     onClick={() => {
                       // set the gallery index to this project and toggle the expanded panel
                       setIndex(idx);
+                      setProjectSlideIndex(0);
                       setExpanded((e) => (e === idx ? null : idx));
                     }}
                     aria-expanded={expanded === idx}
@@ -145,7 +169,7 @@ export default function Projects() {
                         ))}
                       </div>
                       {/* GitHub links (Backend / Frontend) */}
-                      {(proj.repoBackend || proj.repoFrontend) && (
+                      {(proj.repoBackend || proj.repoFrontend || proj.liveLink) && (
                         <div className="mt-4 flex flex-wrap gap-3">
                           {proj.repoBackend && (
                             <a
@@ -166,6 +190,17 @@ export default function Projects() {
                               className="inline-flex items-center gap-2 bg-gray-900/30 text-emerald-400 px-3 py-1 rounded text-sm hover:bg-emerald-400 hover:text-black transition repo-link-focus"
                             >
                               Github
+                            </a>
+                          )}
+
+                          {proj.liveLink && (
+                            <a
+                              href={proj.liveLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 bg-gray-900/30 text-emerald-400 px-3 py-1 rounded text-sm hover:bg-emerald-400 hover:text-black transition repo-link-focus"
+                            >
+                              Live Link
                             </a>
                           )}
                         </div>

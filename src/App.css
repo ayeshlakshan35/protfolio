@@ -2,6 +2,7 @@
 .scroll-container {
 	height: 100vh;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	scroll-behavior: smooth;
 	scrollbar-width: none; /* Firefox */
 	-ms-overflow-style: none; /* IE and Edge */
@@ -60,25 +61,89 @@
 /* Portrait container: keep a tight, responsive circular portrait on small screens */
 .portrait-container {
 	/* these sizes act as a baseline for Tailwind w-60/h-60 classes; small screens will inherit via CSS override */
-	width: 48rem; /* 192 - much larger */
-	height: 48rem;
+	width: 32rem;
+	height: 32rem;
 }
 
 @media (max-width: 1024px) {
-	.portrait-container {
-		width: 36rem;
-		height: 36rem;
-	}
-}
-
-@media (max-width: 768px) {
 	.portrait-container {
 		width: 28rem;
 		height: 28rem;
 	}
 }
 
+@media (max-width: 768px) {
+	.portrait-container {
+		width: 22rem;
+		height: 22rem;
+	}
+}
+
 @media (max-width: 640px) {
+	html,
+	body,
+	#root {
+		width: 100%;
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+
+	.scroll-section {
+		overflow-x: hidden;
+	}
+
+	.home-hero-section {
+		width: 100%;
+		max-width: 100%;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+		margin-left: 0;
+		margin-right: 0;
+		box-sizing: border-box;
+	}
+
+	.home-hero-copy {
+		width: 100%;
+		min-width: 0;
+	}
+
+	.home-hero-copy h2 {
+		font-size: 1.85rem;
+		line-height: 1.12;
+	}
+
+	.home-hero-copy h2 > span:last-child {
+		font-size: 2rem;
+		line-height: 1.12;
+	}
+
+	.home-hero-description {
+		font-size: 0.95rem;
+		line-height: 1.65;
+		max-width: 100%;
+	}
+
+	.home-hero-actions {
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.home-cv-button {
+		flex-shrink: 0;
+		font-size: 0.9rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.home-social-links {
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.home-hero-portrait {
+		justify-content: center;
+	}
+
 	.portrait-container {
 		width: 18rem;
 		height: 18rem;
